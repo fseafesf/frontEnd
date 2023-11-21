@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let hd = {
+      action: {},
+      get proto() {
+        return this.action;
+      },
+      set proto(obj) {
+        if (obj instanceof Object) {
+          console.log(obj);
+        }
+      },
+    };
+    hd.proto = "abc";
+    console.log(hd.__proto__);
+
+    function User() {}
+    User.prototype.show = function () {
+      console.log("user.name");
+    };
+
+    function Admin() {}
+    // Admin.prototype = Object.create(User.prototype);
+    Admin.__proto__ = User.prototype
+    // Admin.prototype.constructor = Admin
+    Object.defineProperty(Admin.prototype, "constructor", {
+      value: Admin,
+      enumerable:false
+    });
+    console.log(Admin.prototype , "Admin prototype");
+
+    let a = new Admin();
+    console.log(a.__proto__);
+    let b = new a.__proto__.constructor();
+    console.log(b);
+
+    //in 会在原型链上寻找
+    for (let key in a) {
+      console.log(key);
+    }
+    
+  </script>
+</html>

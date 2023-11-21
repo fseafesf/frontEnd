@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas绘制表格</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="200"></canvas>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const numRows = 6; // 包括表头
+      const numColumns = 5; // 包括表头
+      const cellWidth = 80;
+      const cellHeight = 40;
+
+      function drawTable() {
+        // 绘制表头
+        ctx.font = "bold 12px Arial";
+        for (let col = 0; col < numColumns; col++) {
+          const x = col * cellWidth;
+          const y = cellHeight;
+
+          ctx.strokeRect(x, 0, cellWidth, cellHeight);
+
+          // 添加表头内容
+          const headerText = `Header ${col}`;
+          ctx.fillText(headerText, x + cellWidth / 4, cellHeight / 2);
+        }
+
+        // 绘制数据单元格
+        ctx.font = "12px Arial";
+        for (let row = 1; row < numRows; row++) {
+          for (let col = 0; col < numColumns; col++) {
+            const x = col * cellWidth;
+            const y = row * cellHeight;
+
+            ctx.strokeRect(x, y, cellWidth, cellHeight);
+
+            const text = `Cell (${row},${col}) test test`;
+            ctx.fillText(text, x + cellWidth / 4, y + cellHeight / 2);
+          }
+        }
+      }
+
+      drawTable();
+    </script>
+  </body>
+</html>

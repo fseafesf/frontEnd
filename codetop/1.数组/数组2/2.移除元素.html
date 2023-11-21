@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 双指针法
+    let nums = [3, 2, 2, 3], val = 3
+    var removeElement = function (nums, val) {
+        let length = nums.length
+        let slowIndex = 0;
+        for (let fastIndex = 0; fastIndex < length; fastIndex++) {
+            if (val !== nums[fastIndex]) {
+                nums[slowIndex++] = nums[fastIndex]
+            }
+        }
+        return slowIndex
+    };
+    removeElement(nums, val)
+
+
+    // 相向指针
+
+    var removeElement = function (nums, val) {
+        let length = nums.length;
+        let leftIndex = 0;
+        let rightIndex = length - 1
+        while (leftIndex <= rightIndex) { // 找出左边等于val的下标
+            while (nums[leftIndex] !== val && leftIndex <= rightIndex) {
+                leftIndex++;
+            }
+            while (leftIndex <= rightIndex && nums[rightIndex] == val) { // 找出右边不等于val的下标
+                rightIndex--;
+            }
+            if (leftIndex <= rightIndex) {
+                nums[leftIndex++] = nums[rightIndex--] // 将左边下标等于val的换成不等val的
+            }
+        }
+        return leftIndex
+    };
+</script>
+
+</html>

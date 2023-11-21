@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [1, 2, 1]
+    var nextGreaterElements = function (nums) {
+        let length = nums.length
+        let result = Array(length).fill(-1)
+        let stack = []
+        stack.push(0)
+        for (let i = 1; i < length * 2; i++) {
+            if (nums[i % length] < nums[get(stack)]) {
+
+                stack.push(i % length)
+            }
+            else if (nums[i % length] === nums[get(stack)]) {
+                stack.push(i % length)
+            }
+            else {
+                while (stack.length !== 0 && nums[i % length] > nums[get(stack)]) {
+                    result[get(stack)] = nums[i % length] // 求得是下标
+                    stack.pop()
+                }
+                stack.push(i % length)
+            }
+        }
+
+
+        function get(stack) {
+            return stack[stack.length - 1]
+        }
+
+        console.log(result)
+        return result
+    };
+    nextGreaterElements(nums)
+
+    // 循环数组的一种解决办法 就是可以遍历数组的两倍 通过i%length来解决
+</script>
+
+</html>

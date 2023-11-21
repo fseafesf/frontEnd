@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [1,2,3];
+    var permute = function (nums) {
+        let res = [];
+        let path = [];
+        let used = new Array(nums.length).fill(false);
+        function back(nums){
+            if(path.length === nums.length){
+                res.push([...path]);
+                return
+            }
+            for(let i = 0; i< nums.length;i++){
+                if(used[i]) continue;
+                path.push(nums[i])
+                used[i] = true
+                back(nums);
+                used[i] = false;
+                path.pop()
+            }
+        }
+        back(nums);
+        return res
+    };
+    console.log(permute(nums))
+</script>
+
+</html>

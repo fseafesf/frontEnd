@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var MyStack = function () {
+        this.quene = []
+    };
+
+    /** 
+     * @param {number} x
+     * @return {void}
+     */
+    MyStack.prototype.push = function (x) {
+        this.quene.push(x)
+    };
+
+    /**
+     * @return {number}
+     */
+    MyStack.prototype.pop = function () {
+        let length = this.quene.length;
+        while (length-- > 1) {
+            this.quene.push(this.quene.shift())
+        }
+        return this.quene.shift()
+    };
+
+    /**
+     * @return {number}
+     */
+    MyStack.prototype.top = function () {
+        let x = this.pop()
+        this.quene.push(x)
+        return x
+    };
+
+    /**
+     * @return {boolean}
+     */
+    MyStack.prototype.empty = function () {
+        return !this.quene.length
+    };
+
+    /**
+     * Your MyStack object will be instantiated and called as such:
+     * var obj = new MyStack()
+     * obj.push(x)
+     * var param_2 = obj.pop()
+     * var param_3 = obj.top()
+     * var param_4 = obj.empty()
+     */
+</script>
+
+</html>

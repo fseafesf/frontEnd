@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var mergeTrees = function (root1, root2) {
+      const preOrder = (node1, node2) => {
+        if (node1 == null) return node2;
+        if (node2 == null) return node1;
+        let node = new TreeNode(node1.val + node2.val);
+        node.left = preOrder(node1.left, node2.left);
+        node.right = preOrder(node1.right, node2.right);
+        return node;
+      };
+      return preOrder(root1, root2);
+    };
+  </script>
+</html>

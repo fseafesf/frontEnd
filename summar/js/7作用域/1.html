@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作用域</title>
+  </head>
+  <body></body>
+  <script>
+    //js作用域 就是代码名字在某个范围内起作用和效果 ，目的是减少命名冲突
+    //js作用域 全局作用域 局部作用域
+    //全局作用域 : 整个script标签 或者是一个单独的js文件
+    //局部作用域 : 在函数内部就是局部作用域
+    function fn() {
+      let num = 10;
+    }
+
+    //变量的作用域 全局变量 局部变量 全局变量比较占内存 局部变量 当程序执行完毕时就会销毁比较节约内存资源
+    let  num = 10;
+    function fn1(){
+        let num = 20
+        console.log(num)
+        console.log(this)
+    }
+    fn1()
+
+    //作用域链 内部函数可以访问外部函数的变量 采取的是链式查找的方式来决定取哪个值 就近原则
+    let number = 10
+    function fn2 () {
+        let number = 20
+        console.log(number)
+        function fn3() {
+            console.log(number)
+        }
+        fn3()
+    }
+    fn2()
+  </script>
+</html>

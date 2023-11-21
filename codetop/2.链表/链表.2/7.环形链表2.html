@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var detectCycle = function(head) {
+    let slow = head;
+    let fast = head
+    while(fast  && fast.next ){
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow == fast){
+            let index1 = fast;
+            let index2 = head
+            while(index1 != index2){
+                index1 = index1.next;
+                index2 = index2.next;
+            }
+            return index2
+        }
+    }
+    return null
+};
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let strs = ["10", "0001", "111001", "1", "0"], m = 5, n = 3
+    var findMaxForm = function (strs, m, n) {
+        let dp = new Array(m + 1).fill().map(() => new Array(n + 1).fill(0))
+        let zeroNum;
+        let oneNum;
+        for (let str of strs) {
+            zeroNum = 0;
+            oneNum = 0
+            for (let s of str) {
+                if (s == '0') {
+                    zeroNum++;
+                }
+                else oneNum++;
+            }
+
+            for (let i = m; i >= zeroNum; i--) {
+                for (let j = n; j >= oneNum; j--) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i - zeroNum][j - oneNum] + 1)
+                }
+            }
+        }
+        return dp[m][n]
+    };
+    // 对每一个字符串遍历 来填充dp数组
+    findMaxForm(strs, m, n)
+</script>
+
+</html>

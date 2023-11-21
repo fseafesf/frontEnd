@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var isValid = function (s) {
+        let map = new Map();
+        map.set("{", "}");
+        map.set("(", ")");
+        map.set("[", "]");
+        let stack = []
+        for (let i of s) {
+            if (map.has(i)) {
+                stack.push(map.get(i));
+                continue; // 记住continue
+            }
+            if (i !== stack.pop()) {
+                return false
+            }
+        }
+        return !stack.length
+    };
+</script>
+
+</html>

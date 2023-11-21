@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组去重 转化为字符串</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = ["a", "c", "z", "a", "b", "e", "c", "k", "b"];
+
+    function unique(arr) {
+      let newArr = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) == -1) {
+          newArr.push(arr[i]);
+        }
+      }
+      return newArr;
+    }
+    console.log(unique(arr));
+
+    //将数组转化为字符串
+    let arr1 = [1,2,3];
+    console.log(arr1.toString());
+    console.log(arr1.join());
+
+    let sum = arr1.reduce((pre , cur) => {
+        console.log(pre , cur);
+        return pre + cur
+    },0)
+    console.log(sum);
+  </script>
+</html>

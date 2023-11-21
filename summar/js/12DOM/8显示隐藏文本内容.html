@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" value="手机" id="input" style="color: #999;"/>
+  </body>
+  <script>
+    let input = document.getElementById("input");
+    input.onfocus = function () {
+      if (input.value == "手机") {
+        this.value = "";
+      }
+      this.style.color = '#333'
+    };
+    input.onblur = function () {
+      if (this.value == "") {
+        this.value = "手机";
+      }
+      this.style.color = '#999'
+    };
+  </script>
+</html>

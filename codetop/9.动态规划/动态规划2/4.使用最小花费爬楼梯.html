@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var minCostClimbingStairs = function (cost) {
+      let length = cost.length;
+      // dp数组代表第i个的最低花费
+      let dp = Array(length + 1).fill(0);
+      for (let i = 2; i <= length; i++) {
+        // 状态转移方程 每次最小的都是由前面两个的最低花费加上cost
+        dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+      }
+      return dp[length];
+    };
+  </script>
+</html>

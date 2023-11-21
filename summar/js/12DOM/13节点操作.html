@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节点操作</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="erweima">
+        <ul>
+          <li>我是li</li>
+          <li>我是li</li>
+          <li>我是li</li>
+          <li>我是li</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    let ewm = document.querySelector(".erweima");
+    console.log(ewm.parentNode);
+
+    let ul = document.querySelector("ul");
+    //childNodes 所有的子节点 包括回车也是文本节点
+    //children 返回的是一个伪数组
+    //firstChile 第一个子节点 不管是文本节点还是元素节点
+    console.log(ul.children);
+    console.log(ul.firstElementChild);
+    console.log(ul.children[0]);
+  </script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval</title>
+  </head>
+  <style>
+    .box {
+      display: flex;
+    }
+    .box div {
+      width: 50px;
+      height: 50px;
+      background: black;
+      margin-left: 15px;
+      color: white;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <div class="hour"></div>
+      <div class="minute"></div>
+      <div class="second"></div>
+    </div>
+    <button class="begin">开始</button>
+    <button class="stop">停止</button>
+  </body>
+  <script>
+    /* let timer = setInterval(() => {
+        console.log('输出');
+    }, 1000); */
+    //setTimeout 延时时间到了 到了就去调用这个回调函数 只调用一次
+    //setInterval 每隔一段时间调用
+    let h = document.querySelector(".hour");
+    let m = document.querySelector(".minute");
+    let s = document.querySelector(".second");
+    let inputTime = +new Date('2022-7-1 18:00:00');
+    //开启定时器
+    setInterval(countDown , 0)
+    function countDown() {
+      let nowTime = +new Date(); //当前总的毫秒数
+      let times = (inputTime - nowTime) / 1000;
+      let hour = parseInt((times / 60 / 60) % 24);
+      hour = hour < 10 ? "0" + hour : hour;
+      h.innerHTML = hour;
+      let minute = parseInt((times / 60) % 60);
+      minute = minute < 10 ? "0" + minute : minute;
+      m.innerHTML = minute;
+      let second = parseInt(times % 60);
+      second = second < 10 ? "0" + second : second;
+      s.innerHTML = second;
+    }
+    
+  </script>
+</html>

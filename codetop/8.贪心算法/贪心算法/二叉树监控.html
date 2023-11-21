@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 2有覆盖    1有摄像头   0无覆盖 
+    var minCameraCover = function (root) {
+        let result = 0;
+        function traversal(root) {
+            if (root == null) return 2;
+            let left = traversal(root.left);
+            let right = traversal(root.right)
+
+            // 假如左右结点都有覆盖的话 那么该节点就是无覆盖的
+            if (left == 2 && right == 2) {
+                return 0;
+            }
+            // 假如 左右结点有一个是无覆盖的 就得进行摄像头安放
+            if (left == 0 || right == 0) {
+                result++;
+                return 1
+            }
+            else {
+                return 2;
+            }
+
+        }
+
+        if (traversal(root) == 0) {
+            result++;
+        }
+        return result;
+    };
+</script>
+
+</html>

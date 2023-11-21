@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var rob = function (nums) {
+      const length = nums.length;
+      if (length === 0) return 0;
+      if (length === 1) return nums[0];
+
+      function sob(start, end) {
+        if (start === end) return nums[start];
+        const dp = Array(nums.length).fill(0);
+        dp[start] = nums[start];
+        dp[start + 1] = Math.max(nums[start], nums[start + 1]);
+        for (let i = start + 2; i <= end; i++) {
+          dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+        }
+        return dp[end];
+      }
+
+      let result1 = sob(0, length - 2);
+      let result2 = sob(1, length - 1);
+      return Math.max(result1, result2);
+    };
+  </script>
+</html>

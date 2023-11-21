@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let prices = [1, 3, 2, 8, 4, 9], fee = 2
+    var maxProfit = function (prices, fee) {
+        let result = 0;
+        let minPrice = prices[0];
+        for (let i = 1; i < prices.length; i++) {
+            const price = array[i];
+            if(price <  minPrice){
+                minPrice = price
+            }
+
+            if(price >= minPrice && price <= minPrice +fee){
+                continue;
+            }
+
+            if(price > minPrice + fee){
+                result += price - minPrice - fee
+                minPrice = price - fee
+            }
+        }
+
+        return result;
+    };
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
+    var dailyTemperatures = function (temperatures) {
+        let length = temperatures.length;
+        let result = Array(length).fill(0)
+        let stack = []
+        stack.push(0)
+        for (let i = 1; i < length; i++) {
+            if (temperatures[i] < temperatures[get(stack)]) {
+                stack.push(i)
+            }
+            else if (temperatures[i] === temperatures[get(stack)]) {
+                stack.push(i)
+            }
+            else {
+                while (stack.length !== 0 && temperatures[i] > temperatures[get(stack)]) {
+                    result[get(stack)] = i - get(stack)
+                    stack.pop()
+                }
+                // 这里需要添加此时最大的i
+                stack.push(i)
+            }
+        }
+
+        // 获取到stack头元素下标
+        function get(stack) {
+            return stack[stack.length - 1]
+        }
+      console.log(result)
+      return result
+    };
+
+    dailyTemperatures(temperatures)
+</script>
+
+</html>

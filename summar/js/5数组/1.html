@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = new Array();
+    arr.push("123");
+    console.log(arr);
+
+    let arr1 = [1, 2, 3, true];
+    console.log(arr1[3]);
+    for (let i = 0; i < arr1.length; i++) {
+      console.log(arr1[i]);
+    }
+
+    let arr2 = [2,3,45,12,91,52];
+    let max = arr2[0];
+    for(let j = 1;j<arr2.length;j++){
+        if(max < arr2[j]){
+            max = arr2[j];
+        }
+    }
+    console.log(max);
+
+    let arr3 = ['red' , 'pink' , 'green' , 'blue']
+    let str = ''
+    for(let k = 0;k<arr3.length;k++){
+        str += arr3[k] + '\n'
+    }
+    console.log(str);
+  </script>
+</html>

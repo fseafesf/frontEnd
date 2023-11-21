@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let stones = [2, 7, 4, 1, 8, 1]
+    var lastStoneWeightII = function (stones) {
+        let sum = stones.reduce((pre, cur) => {
+            return pre + cur
+        }, 0)
+        let target = Math.floor(sum / 2)
+        let dp = new Array(target + 1).fill(0)
+        for (let i = 0; i < stones.length; i++) {
+            for (let j = target; j >= stones[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - stones[i]] + stones[i])
+            }
+        }
+        return (sum - dp[target]) - dp[target]
+    };
+</script>
+
+</html>

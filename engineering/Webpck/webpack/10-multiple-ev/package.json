@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "npx webpack-dev-server -c ./config/webpack.config.dev.js --env development",
+    "build": "npx webpack  -c ./config/webpack.config.prod.js"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^4.10.1"
+  }
+}

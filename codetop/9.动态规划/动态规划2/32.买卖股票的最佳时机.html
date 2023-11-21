@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let prices = [7, 1, 5, 3, 6, 4];
+    var maxProfit = function (prices) {
+      let length = prices.length;
+      let db = Array(length)
+        .fill(0)
+        .map(() => Array(2).fill(0));
+      db[0][0] -= prices[0];
+      db[0][1] = 0;
+      for (let i = 1; i < length; i++) {
+        db[i][0] = Math.max(db[i - 1][0], -prices[i]);
+        db[i][1] = Math.max(db[i - 1][1], db[i - 1][0] + prices[i]);
+      }
+      return db[length - 1][1];
+    };
+    maxProfit(prices);
+  </script>
+</html>

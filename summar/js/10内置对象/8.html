@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String内置对象</title>
+  </head>
+  <body></body>
+  <script>
+    //基本包装类型 就是把简单数据类型包装成为复杂数据类型
+    let str = "andy";
+    console.log(str.length);
+
+    //字符串不可变 字符串内存中新开辟了一个空间
+    /* let str1 = ''
+    for(let i = 1;i<100;i++){
+        str1 +=i;
+    }
+    console.log(str1); */
+
+    //字符串所有的方法都不会修改字符串本身 会返回一个新字符串 str.indexOf('查找的字符' ， 起始的位置)
+    let str1 = "123456";
+    console.log(str1.indexOf(2));
+    console.log(str1.includes(3));
+
+    //查找字符在的位置
+    let str2 = "abcoefoddfdovsdogo";
+    let index = str2.indexOf("o");
+    let num = 0;
+    while (index != -1) {
+      console.log(index);
+      num++;
+      index = str2.indexOf("o", index + 1);
+    }
+    console.log(num);
+
+    let arr = ['red' , 'biue' ,'red' ,'green' ,'red']
+    let i = arr.indexOf('red');
+    let num1 = 0
+    while (i != -1) {
+        console.log(i);
+        num1 ++ ;
+        i = arr.indexOf('red' , i+1)
+    }
+    console.log(num1);
+  </script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 观察者和目标要相互知道
+    // 发布订阅不用互相知道，通过第三方实现调度
+
+    // publisher  发布
+    // subscribe  订阅
+    const PubSub = {
+        list:[],
+        publisher(){
+            this.list.forEach(element => {
+                element()
+            });
+        },
+        subscribe(cb){
+            this.list.push(cb)
+        }
+    }
+
+    function testA(){
+        console.log("testA")
+    }
+
+    function testB(){
+        console.log("testB")
+    }
+
+    PubSub.subscribe(testA)
+    PubSub.subscribe(testB)
+
+    PubSub.publisher()
+</script>
+</html>

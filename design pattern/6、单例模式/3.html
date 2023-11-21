@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .kerwin-model{
+        position: fixed;
+        height: 200px;
+        width: 200px;
+        line-height: 200px;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background: yellow;
+    }
+</style>
+<body>
+   <!--  <div class="kerwin-model">
+        登录对话框
+    </div> -->
+    <button id="open">打开</button>
+    <button id="close">关闭</button>
+</body>
+<script>
+    const open = document.querySelector('#open')
+    const close = document.querySelector('#close')
+    const Model = (function(){
+        let instance = null;
+        return function(){
+            if(!instance){
+                instance = document.createElement('div');
+                instance.innerHTML = "登录对话框"
+                instance.classList.add('kerwin-model')
+                instance.style.display='none'
+                document.body.appendChild(instance)
+            }
+            return instance
+        }
+    })()
+    open.addEventListener('click' ,() => {
+       const model = Model()
+       model.style.display = 'block'
+    })
+    close.addEventListener('click' , () => {
+        const model = Model();
+        model.style.display = 'none'
+    })
+</script>
+</html>

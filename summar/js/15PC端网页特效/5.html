@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll系列</title>
+</head>
+<style>
+    div{
+        height: 100px;
+        width: 200px;
+        background: pink;
+        padding: 10px;
+        overflow: auto;
+    }
+</style>
+<body>
+    <div>
+       我是内容
+       我是内容
+       我是内容
+
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容
+       我是内容我是内容
+       我是内容
+
+    </div>
+</body>
+<script>
+    let div = document.querySelector('div')
+   //scrollHeight 内容的实际大小 不含单位 不包含边框
+   //scrollTop 被卷去的上侧
+   console.log(div.scrollHeight);
+   console.log(div.clientHeight);
+   div.addEventListener('scroll' , () => {
+    console.log(div.scrollTop);
+   })
+</script>
+</html>

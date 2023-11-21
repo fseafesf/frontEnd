@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table cellspacing="50">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>科目</th>
+          <th>成绩</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script>
+    let datas = [
+      {
+        name: "zs",
+        subject: "JavaScript",
+        score: 99,
+      },
+      {
+        name: "zs",
+        subject: "JavaScript",
+        score: 99,
+      },
+      {
+        name: "zs",
+        subject: "JavaScript",
+        score: 99,
+      },
+      {
+        name: "zs",
+        subject: "JavaScript",
+        score: 109,
+      },
+    ];
+    let tbody = document.querySelector("tbody");
+    for (let i = 0; i < datas.length; i++) {
+      let tr = document.createElement("tr");
+      for (let key in datas[i]) {
+        let td = document.createElement("td");
+        td.innerHTML = datas[i][key];
+        tr.appendChild(td);
+      }
+
+      tbody.appendChild(tr);
+      let td1 = document.createElement("td");
+      td1.innerHTML = "<a href='javascript:;'>删除</a>";
+      tr.appendChild(td1);
+    }
+    let as = document.querySelectorAll("a");
+    console.log(as);
+    for (let i = 0; i < as.length; i++) {
+      as[i].onclick = function () {
+        tbody.removeChild(this.parentNode.parentNode);
+      };
+    }
+
+    //innerHtml 和 createElement效率对比
+    //innerHtml通过拼接字符串的方式会效率比较慢
+  </script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let intervals = [[1,100],[11,22],[1,11],[2,12]]
+    var eraseOverlapIntervals = function (intervals) {
+        if (intervals.length == 0) {
+            return 0
+        }
+        // 按照右边界排列
+        intervals.sort((a, b) => {
+            return a[1] - b[1]
+        })
+
+        let count = 1;
+        let end = intervals[0][1];
+        let length = intervals.length
+        for (let i = 1; i < length; i++) {
+            let interval = intervals[i]
+            if (interval[0] >= end) {
+                count++;
+                end = interval[1]
+            }
+            
+        }
+        return length - count
+
+    };
+    console.log(eraseOverlapIntervals(intervals))
+    console.log(intervals)
+</script>
+
+</html>

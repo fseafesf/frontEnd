@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function ave(total, year) {
+      year = year || 1;
+      return Math.round(total / year);
+    }
+    console.log(ave(1000));
+
+    function sortArray(arr, type = "asc") {
+      return arr.sort((a, b) => (type === "asc" ? a - b : b - a));
+    }
+    console.log(sortArray([1, 4, 5, 6, 3], "dsc"));
+
+    {
+      function sum(total, discount = 0, dis = 0) {
+        return Math.ceil(total * (1 - discount) * (1 - dis));
+      }
+      console.log(sum(1000, 0.9, 0.8));
+    }
+
+    {
+      function hd(a) {
+        return a >= 3;
+      }
+      let arr = [1, 2, 3, 4, 56, 3, 2, 3].filter(hd);
+      console.log(arr);
+    }
+
+    {
+      let i = 0;
+      function cms() {
+        console.log(++i);
+      }
+      // setInterval(cms , 1000000)
+    }
+
+    //递归算法
+    {
+      function factorail(num) {
+        if (num === 1) {
+          return 1;
+        }
+        return num * factorail(num - 1);
+      }
+      console.log(factorail(5));
+
+      function sum(...args) {
+        let arr = args;
+        if (arr.length === 0) {
+          return 0;
+        }
+        return arr.pop() + sum(...arr);
+      }
+      console.log(sum(1, 2, 3, 4, 7, 8, 9, 10));
+    }
+    {
+      let lessons = [
+        {
+          title: "axios",
+          click: 23,
+        },
+        {
+          title: "css",
+          click: 29,
+        },
+        {
+          title: "js",
+          click: 50,
+        },
+        {
+          title: "react",
+          click: 88,
+        },
+      ];
+      function change(lessons, num = 100, i = 0) {
+        if ((i === lessons.length)) {
+          return lessons;
+        }
+        lessons[i].click += num;
+        return change(lessons, num, ++i);
+      }
+      console.table(change(lessons));
+    }
+  </script>
+</html>

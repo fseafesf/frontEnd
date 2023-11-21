@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let problems = [
+        { id: 1, content: '这是第一道题目', type: 2 },
+        { id: 2, content: '这是第二道题目', type: 1 },
+        { id: 3, content: '这是第三道题目', type: 3 },
+        { id: 4, content: '这是第四道题目', type: 4 },
+        { id: 5, content: '这是第五道题目', type: 5 },
+        { id: 6, content: '这是第六道题目', type: 4 },
+        { id: 7, content: '这是第七道题目', type: 1 },
+        { id: 8, content: '这是第八道题目', type: 2 },
+        { id: 9, content: '这是第九道题目', type: 3 },
+    ]
+    function group(arr) {
+        let result = [];
+        let map = {};
+        let res = []
+        for (let item of arr) {
+            let { id, type } = item
+            if (!map[type]) {
+                result.push({
+                    type,
+                    data: [item]
+                })
+                map[type] = item
+            }
+            else {
+                for (let i = 0; i < result.length; i++) {
+                    let typeObject = result[i];
+                    if (typeObject.type === type) {
+                        typeObject.data.push(item)
+                        break;
+                    }
+                }
+            }
+        }
+        return result.sort((a, b) => {
+            return a.type - b.type
+        })
+      
+    }
+
+    // function group(arr){
+    //     let map = {}
+    //     for (let item of arr){
+    //         let {type:T} = item
+    //         if(!map[T]){
+    //             map[T] = [];
+    //             map[T].push(item)
+    //         }
+    //         else{
+    //             map[T].push(item)
+    //         }
+    //     }
+    //     return map
+    // }
+    let res = group(problems)
+    console.log(res)
+
+    /* function singleType(arr, type) {
+        let result = arr.filter((item) => {
+            return item.type === type
+        })
+        return result
+    }
+    function typeFilter(param) {
+        return singleType(res, param);
+    } */
+
+</script>
+
+</html>

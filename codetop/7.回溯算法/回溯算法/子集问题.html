@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [1, 2, 3];
+    var subsets = function (nums) {
+        let res = [];
+        let path = [];
+        function back(startIndex) {
+            console.log(path)
+            res.push([...path])
+
+            for (let i = startIndex; i < nums.length; i++) {
+                path.push(nums[i])
+                back(i + 1)
+                path.pop()
+            }
+        }
+        back(0)
+        return res
+    };
+
+
+    console.log(subsets(nums))
+</script>
+
+</html>

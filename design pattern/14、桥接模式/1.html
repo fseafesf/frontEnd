@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Aodi1(engine) {
+        this.engine = engine
+    }
+
+    Aodi1.prototype.plantform = function () {
+        console.log('aodi1 平台')
+    }
+    Aodi1.prototype.loadEngine = function () {
+        this.engine.run()
+    }
+
+    function Aodi2(engine) {
+        this.engine = engine
+    }
+
+    Aodi2.prototype.plantform = function () {
+        console.log('aodi2 平台')
+    }
+    Aodi2.prototype.loadEngine = function () {
+        this.engine.run()
+    }
+
+    function V6() {
+        this.run = function () {
+            console.log("v6 发动机")
+        }
+    }
+    function V8() {
+        this.run = function () {
+            console.log("v8 发动机")
+        }
+    }
+
+    let aodi1 = new Aodi1(new V6())
+    let aodi2 = new Aodi1(new V8())
+    aodi1.loadEngine()
+</script>
+
+</html>

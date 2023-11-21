@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "abc", t = "ahbgdc"
+    var isSubsequence = function (s, t) {
+        let length1 = s.length
+        let length2 = t.length
+        // dp的含义 dp[i][j] 表示到s,t的i-1,j-1位时的子序列长度
+        let dp = Array.from(Array(length1 + 1), () => Array(length2 + 1).fill(0))
+        for (let i = 1; i <= length1; i++) {
+            for (let j = 1; j <= length2; j++) {
+                if (s[i - 1] === t[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+                } else {
+                    dp[i][j] = dp[i][j - 1]
+                }
+            }
+        }
+        if (dp[length1][length2] === length1) return true
+        return false
+    };
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var rob = function (root) {
+        let [res1, res2] = robTree(root)
+        console.log(res1, res2)
+        return Math.max(res1, res2)
+    };
+
+    function robTree(root) {
+        if (!root) return [0, 0]
+
+        let left = robTree(root.left)
+        let right = robTree(root.right)
+
+        // 偷当前结点 那就只能取子节点不偷的情况
+        let val1 = root.val + left[0] + right[0]
+
+        // 不偷当前结点
+        let val2 = Math.max(left[0], left[1]) + Math.max(right[0], right[1])
+
+        // 不偷 偷
+        return [val2, val1]
+    }
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        display: flex;
+    }
+
+    div span {
+        width: 100px;
+        display: block;
+        margin: 5px;
+    }
+
+    div span:first-child {
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+
+<body>
+    <div>
+        <span>5654</span>
+        <span>6548648646</span>
+    </div>
+    <div>
+        <span>545</span>
+        <span>65486646</span>
+    </div>
+    <div>
+        <span>565564655</span>
+        <span>6868646</span>
+    </div>
+    <div>
+        <span>5655</span>
+        <span>6548646</span>
+    </div>
+    <div>
+        <span>545</span>
+        <span>654646</span>
+    </div>
+
+</body>
+<script>
+    let target = 7, nums = [2, 3, 1, 2, 4, 3];
+    var minSubArrayLen = function (target, nums) {
+        let left = 0;
+        let right = 0;
+        let sum = 0;
+        let len = nums.length;
+        let res = len + 1;
+        while (right < len) {
+            sum += nums[right++]
+            while (sum >= target) {
+                res = res < right - left ? res : right - left;
+                sum -= nums[left++]
+            }
+        }
+        return res > len ? 0 : res
+    };
+    minSubArrayLen(target, nums)
+    console.log(minSubArrayLen(target, nums))
+
+    // 核心思路 : 滑动窗口 当窗口右边小于整体的长度时 就将元素一个个相加
+    // 当发现前面的和大于目标值时 减掉当前窗口的第一个值 并将窗口的起始位置加一 
+    // sum -= nums[i++]
+</script>
+
+</html>

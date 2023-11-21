@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let hd = "houdunren2200hdcms9988";
+    let nums = [...hd].filter((item) => !Number.isNaN(parseInt(item)));
+    console.log(nums.join(""));
+    console.log(hd.match(/\d/g).join(""));
+
+    //创建正则表达式
+    let hd1 = "houdunren.com";
+    let a = "u";
+    console.log(/u/.test(hd));
+    console.log(eval(`/${a}/`).test(hd1));
+    console.log(/u|@/.test(hd1));
+
+    let tel = "010-999999";
+    console.log(/(010|020)\-\d{7,8}/.test(tel));
+
+    // .除换行外的任意字符 .普通点
+    let price = 23 - 23;
+    console.log(/\d+\.\d+/.test(price));
+    let reg = new RegExp("\\d+\\.\\d+");
+
+    let url = "https://www.houdunren.com";
+    console.log(/https?\/\/\w+\.\w+\.\w+/);
+
+    let hd2 = "hsgd12";
+
+    let hd3 = `
+          <span>
+           houdunren
+           hdcms
+          </span>
+`;
+
+    console.log(hd3.match(/<span>[\s\S]+<\/span>/));
+
+    let hd4 = `
+  <h1>houdunren</h1>
+  <span>后盾人</span>
+  <h2>hdcms</h2>
+`;
+
+    let reg1 = /<(h[1-6])>([\s\S]*)<\/\1>/gi;
+    console.log(hd4.replace(reg1, `<p>$2</p>`));
+
+    {
+      let hd = `
+  https://www.houdunren.com
+  http://houdunwang.com
+  https://hdcms.com
+`;
+
+      let reg = /https?:\/\/((?:\w+\.)?\w+\.(com|org|cn))/gi;
+      console.dir(hd.match(reg));
+    }
+
+    // var m = "abcabc".match(/(?:a)(b)(c)/)
+    // console.log(m);
+  </script>
+</html>

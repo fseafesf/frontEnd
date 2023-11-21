@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let candidates = [2, 3, 6, 7], target = 7;
+    var combinationSum = function (candidates, target) {
+        let path = [];
+        let res = [];
+        function back(j, sum) {
+            if(sum > target){
+                return
+            }
+            if (sum == target) {
+                res.push(Array.from(path))
+                return
+            }
+            for (let i = j; i < candidates.length; i++) {
+                const n = candidates[i]
+                sum += n
+                path.push(n)
+                back(i, sum) //可以取重复的数字 不用加一
+                path.pop()
+                sum -= n
+            }
+        }
+        back(0, 0)
+        return res
+    };
+    console.log(combinationSum(candidates, target))
+</script>
+
+</html>

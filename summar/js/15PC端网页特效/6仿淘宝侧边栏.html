@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="js/animate.js"></script>
+    <style>
+      .slider-bar {
+        position: absolute;
+        left: 50%;
+        top: 300px;
+        margin-left: 600px;
+        width: 45px;
+        height: 130px;
+        background-color: pink;
+      }
+
+      .w {
+        width: 1200px;
+        margin: 10px auto;
+      }
+
+      .header {
+        height: 150px;
+        background-color: purple;
+      }
+
+      .banner {
+        height: 250px;
+        background-color: skyblue;
+      }
+
+      .main {
+        height: 1000px;
+        background-color: yellowgreen;
+      }
+
+      span {
+        display: none;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slider-bar">
+      <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+      //1. 获取元素
+      var sliderbar = document.querySelector(".slider-bar");
+      var banner = document.querySelector(".banner");
+      var main = document.querySelector(".main");
+      let goback = document.querySelector(".goBack");
+      let bannerTop = banner.offsetTop;
+      let sliderTop = sliderbar.offsetTop - bannerTop;
+      let mainTop = main.offsetTop;
+      document.addEventListener("scroll", function () {
+        //window.pageYOffset 页面被卷去的头部
+        // console.log(window.pageYOffset);
+        // 当页面被卷去的头部大于172 侧边栏的定位改为固定定位
+        if (window.pageYOffset >= bannerTop) {
+          sliderbar.style.position = "fixed";
+          sliderbar.style.top = sliderTop + "px";
+        } else {
+          sliderbar.style.position = "absolute";
+          sliderbar.style.top = 300 + "px";
+        }
+        if (window.pageYOffset >= mainTop) {
+          goback.style.display = "block";
+          //   console.log(mainTop);
+        } else {
+          goback.style.display = "none";
+        }
+      });
+
+      //offset系列 经常用于获取元素位置
+      //client系列 获取元素大小
+      //scroll系列 获取滚动距离
+      //window.pageYoffset 页面滚动的距离
+      goback.addEventListener("click", function () {
+        animate(window , 0)
+      });
+
+      function animate(obj, target, callback) {
+        console.log(callback);
+        //先清除以前的定时器
+        clearInterval(obj.timer);
+        obj.timer = setInterval(() => {
+          //把步长值改为整数
+          let num =
+            target - window.pageYOffset > 0
+              ? Math.ceil((target - window.pageYOffset) / 10)
+              : Math.floor((target - window.pageYOffset) / 10);
+          if (window.pageYOffset == target) {
+            clearInterval(obj.timer);
+            callback && callback();
+          } else {
+            obj.style.left = obj.offsetTop + num + "px";
+            window.scroll(0, window.pageYOffset + num);
+          }
+        }, 15);
+      }
+
+    </script>
+  </body>
+</html>

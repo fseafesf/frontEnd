@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var a = 1;
+    // function fn() {
+    //     console.log(a)
+    // }
+
+    // function fn1() {
+    //     var a = 2;
+    //     fn()
+    // }
+
+    // fn1();
+
+    // function Person() {
+
+    // }
+
+    // Person.prototype.name = 'Kevin';
+
+    // var person = new Person();
+
+    // console.log(Person.__proto__)
+    // person.name = 'Daisy';
+    // console.log(person.name) // Daisy
+
+    // delete person.name;
+    // console.log(person.name) // Kevin
+
+    // var a = 10;
+    var o = {
+        a: 11,
+        b: {
+            
+            fn: function () {
+                var a = 12
+                console.log(a);
+            }
+        }
+    }
+    o.b.fn();
+
+    function a(test){
+		console.log(b);
+		var b = 0;
+		console.log(b);
+		function b(){
+			console.log(222);
+		}
+	}
+	a(1);
+</script>
+
+</html>

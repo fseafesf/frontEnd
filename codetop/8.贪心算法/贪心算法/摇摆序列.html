@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [1, 7, 4, 9, 2, 5];
+    var wiggleMaxLength = function (nums) {
+        if (nums.length <= 1) {
+            return nums.length
+        }
+        let cur = 0;
+        let pre = 0;
+        let result = 1;
+        for (let i = 0; i < nums.length; i++) {
+            cur = nums[i + 1] - nums[i]
+            if((cur > 0 && pre <= 0) || (cur < 0&&pre>=0) ){
+                result++;
+                pre = cur
+            }
+        }
+        return result
+    };
+    console.log(wiggleMaxLength(nums))
+</script>
+
+</html>

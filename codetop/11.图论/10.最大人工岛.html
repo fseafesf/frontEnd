@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let grid = [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 1, 1, 1, 0, 0],
+      [0, 1, 0, 0, 1, 0, 0],
+      [1, 0, 1, 0, 1, 0, 0],
+      [0, 1, 0, 0, 1, 0, 0],
+      [0, 1, 0, 0, 1, 0, 0],
+      [0, 1, 1, 1, 1, 0, 0],
+    ];
+    var largestIsland = function (grid) {
+      let dir = [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+      ];
+      let m = grid.length;
+      let n = grid[0].length;
+
+      let map = new Map();
+      let mark = 2;
+      let visited = Array(m)
+        .fill()
+        .map(() => Array(n).fill(false));
+      let isAllGrid = true;
+      let count;
+
+      function dfs(x, y, mark) {
+        if (visited[x][y] || grid[x][y] == 0) return;
+        visited[x][y] = true;
+        grid[x][y] = mark;
+        count++;
+        for (let i = 0; i < 4; i++) {
+          let nextX = x + dir[i][0];
+          let nextY = y + dir[i][1];
+          if (nextX < 0 || nextX >= m || nextY < 0 || nextY >= n) continue;
+          dfs(nextX, nextY, mark);
+        }
+      }
+
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (grid[i][j] == 0) isAllGrid = false;
+          if (!visited[i][j] && grid[i][j] == 1) {
+            count = 0;
+            dfs(i, j, mark);
+            map.set(mark, count);
+            mark++;
+          }
+        }
+      }
+
+      console.log(isAllGrid, map);
+
+      if (isAllGrid) return m * n;
+
+      let set = new Set();
+      let result = 0;
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          let count = 1;
+          set.clear();
+          if (grid[i][j] == 0) {
+            if (i == 3 && j == 1);
+            for (let k = 0; k < 4; k++) {
+              let nearX = i + dir[k][0];
+              let nearY = j + dir[k][1];
+              if (nearX < 0 || nearX >= m || nearY < 0 || nearY >= n) continue;
+              if (set.has(grid[nearX][nearY])) continue;
+              count += map.get(grid[nearX][nearY]);
+              set.add(grid[nearX][nearY]);
+            }
+          }
+          result = Math.max(result, count);
+        }
+      }
+
+      return result;
+    };
+
+    largestIsland(grid);
+  </script>
+</html>

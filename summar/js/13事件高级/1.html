@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册事件</title>
+  </head>
+  <style>
+    .box1,
+    .box2,
+    .box3 {
+      height: 200px;
+      width: 200px;
+      background: pink;
+    }
+  </style>
+  <body>
+    <button class="box">点击</button>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </body>
+  <script>
+    let box = document.querySelector(".box");
+    box.addEventListener(
+      "click",
+      () => {
+        console.log(123);
+      },
+      true
+    );
+    let boxs = document.querySelectorAll("div");
+    boxs[0].addEventListener("click", fn);
+
+    function fn() {
+      alert(222);
+      boxs[0].removeEventListener("click", fn);
+    }
+  </script>
+</html>

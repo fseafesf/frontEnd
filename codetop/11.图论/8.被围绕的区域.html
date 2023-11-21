@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let board = [
+      ["X", "X", "X", "X"],
+      ["X", "O", "O", "X"],
+      ["X", "X", "O", "X"],
+      ["X", "O", "X", "X"],
+    ];
+    var solve = function (board) {
+      let dir = [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+      ];
+
+      let m = board.length;
+      let n = board[0].length;
+
+      function dfs(x, y) {
+        board[x][y] = "A";
+        console.log(x, y, board);
+        for (let i = 0; i < 4; i++) {
+          let nextX = x + dir[i][0];
+          let nextY = y + dir[i][1];
+          if (nextX < 0 || nextX >= m || nextY < 0 || nextY >= n) continue;
+          if (board[nextX][nextY] === "A" || board[nextX][nextY] === "X")
+            continue;
+          dfs(nextX, nextY);
+        }
+      }
+
+      for (let i = 0; i < m; i++) {
+        if (board[i][0] === "O") dfs(i, 0);
+        if (board[i][n - 1] === "O") dfs(i, n - 1);
+      }
+
+      for (let j = 0; j < n; j++) {
+        if (board[0][j] === "O") dfs(0, j);
+        if (board[m - 1][j] === "O") dfs(m - 1, j);
+      }
+
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (board[i][j] === "O") board[i][j] = "X";
+          if (board[i][j] === "A") board[i][j] = "O";
+        }
+      }
+    };
+
+    solve(board);
+  </script>
+</html>

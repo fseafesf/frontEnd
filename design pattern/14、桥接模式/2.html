@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // model
+    // message
+    // toast
+
+    const Animations = {
+        bounce: {
+            show(ele) {
+                console.log(ele, "弹跳显示")
+            },
+            hide(ele) {
+                console.log(ele, "弹跳隐藏")
+            }
+        },
+        slide: {
+            show(ele) {
+                console.log(ele, "滑动显示")
+            },
+            hide(ele) {
+                console.log(ele, "滑动隐藏")
+            }
+        },
+        rotate: {
+            show(ele) {
+                console.log(ele, "旋转显示")
+            },
+            hide(ele) {
+                console.log(ele, "旋转隐藏")
+            }
+        }
+    }
+
+    function toast(ele, animation) {
+        this.ele = ele
+        this.animation = animation
+    }
+
+    toast.prototype.show = function () {
+        this.animation.show(this.ele)
+    }
+    toast.prototype.hide = function () {
+        this.animation.hide(this.ele)
+    }
+
+    const toast1 = new toast("div1", Animations.bounce)
+    toast1.show()
+    setTimeout(() => {
+        toast1.hide()
+    }, 1000);
+
+    const toast2 = new toast("div2" , Animations.rotate)
+</script>
+
+</html>

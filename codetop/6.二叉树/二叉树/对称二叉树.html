@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var isSymmetric = function (root) {
+        if (root == null) {
+            return true
+        }
+        let quene = []
+        quene.push(root.left)
+        quene.push(root.right)
+        while (quene.length) {
+            let leftNode = quene.shift()
+            let rightNode = quene.shift()
+            if (leftNode === null && rightNode === null) {
+                continue;
+            }
+            if (leftNode == null || rightNode == null || leftNode.val != rightNode.val) {
+                return false
+            }
+            quene.push(leftNode.left);
+            quene.push(rightNode.right);
+            quene.push(leftNode.right);
+            quene.push(rightNode.left);
+        }
+        return true
+    };
+</script>
+
+</html>

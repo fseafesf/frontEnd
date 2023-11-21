@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var allPathsSourceTarget = function (graph) {
+      let path = [];
+      let result = [];
+      function bfs(start) {
+        if (start === graph.length - 1) {
+          result.push([...path]);
+          return;
+        }
+        for (let i = 0; i < graph[start].length; i++) {
+          path.push(graph[start][i]);
+          bfs(graph[start][i]);
+          path.pop();
+        }
+      }
+      path.push(0);
+      bfs(0);
+      return result;
+    };
+  </script>
+</html>

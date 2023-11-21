@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        display: flex;
+        height: 500px;
+    }
+
+    .box .left {
+        width: 150px;
+        background: skyblue;
+    }
+
+    .box .right {
+        flex: 1;
+        background: yellow;
+    }
+</style>
+
+<body>
+    <header class="header"></header>
+    <div class="box">
+        <div class="left">
+            <ul>
+                <li>首页</li>
+                <li>用户管理</li>
+                <li>权限管理</li>
+                <li>新闻管理</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="bread"></div>
+        </div>
+    </div>
+    <footer class="foot"></footer>
+</body>
+<script>
+    const PubSub = {
+        message: {},
+        publisher(type, data) {
+            if (!this.message[type]) return
+            this.message[type].forEach(element => {
+                element(data)
+            });
+        },
+        subscribe(type, cb) {
+            if (!this.message[type]) {
+                this.message[type] = [cb]
+            }
+            else {
+                this.message[type].push(cb)
+            }
+        },
+        unSubscribe(type, cb) {
+            if (!this.message[type]) return
+            if (!cb) {
+                // 取消所有当前type
+                this.message[type] && (this.message[type] = [])
+            }
+            else {
+                this.message[type] = this.message[type].filter(item => {
+                    item !== cb
+                })
+            }
+        }
+    }
+
+    PubSub.subscribe("updateBread" , function(data){
+        console.log("我是订阅者"  , data)
+        document.querySelector(".bread").innerHTML = data
+    })
+
+    let oli = document.querySelectorAll(".left li");
+    for(let i =0;i<oli.length;i++){
+        oli[i].onclick = function(){
+            PubSub.publisher("updateBread" , this.innerHTML)
+        }
+    }
+</script>
+
+</html>

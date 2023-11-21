@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var getIntersectionNode = function (headA, headB) {
+        let curA = new ListNode(0)
+        curA.next = headA;
+        let curB = new ListNode(0);
+        curB.next = headB;
+        let lenA = 0;
+        let lenB = 0;
+        while (curA.next !== null) {
+            lenA++
+            curA = curA.next
+        }
+
+        while (curB.next !== null) {
+            lenB++
+            curB = curB.next
+        }
+        curA = headA;
+        curB = headB;
+
+        let gap;
+        if (lenA < lenB) {
+            [curA, curB] = [curB, curA];
+            [lenA, lenB] = [lenB, lenA];
+        }
+
+        gap = lenA - lenB
+        while (gap-- > 0) {
+            curA = curA.next
+        }
+        console.log(curA, curB)
+        while (curA && curA !== curB) {
+            curA = curA.next;
+            curB = curB.next
+        }
+
+        return curA
+    };
+</script>
+
+</html>

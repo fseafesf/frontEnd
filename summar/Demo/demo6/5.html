@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [
+        {
+            type: 1,
+            data: [
+                { id: 1, context: '123' },
+                { id: 2, context: '456' },
+                { id: 3, context: '789' },
+            ]
+        },
+        {
+            type: 2,
+            data: [
+                { id: 1, context: 'abc' },
+                { id: 2, context: 'def' },
+                { id: 3, context: 'ghj' },
+            ]
+        },
+        {
+            type: 3,
+            data: [
+                { id: 1, context: 'qqq' },
+                { id: 2, context: 'www' },
+                { id: 3, context: 'eee' },
+            ]
+        },
+        {
+            type: 4,
+            data: [
+                { id: 1, context: 'aaa' },
+                { id: 2, context: 'bbb' },
+                { id: 3, context: 'ccc' },
+            ]
+        }
+    ]
+
+    function breakGroup(arr) {
+        console.log(arr)
+        let result = arr.reduce((pre, cur) => {
+            let { type, data } = cur
+            return pre.concat(data)
+        }, [])
+        return result
+    }
+    console.log(breakGroup(arr))
+    console.log(arr)
+</script>
+
+</html>

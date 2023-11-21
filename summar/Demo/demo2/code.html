@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="v_code">
+      <div class="code_show">
+        <span class="code" id="checkCode"></span>
+        <a class="linkbtn" id="change">换一张</a>
+      </div>
+      <div class="input_code">
+        <label for="inputcode"></label>
+        <input type="text" id="inputcode" />
+        <span id="text_show"></span>
+      </div>
+      <input id="button" type="button" value="确定" />
+    </div>
+  </body>
+  <script>
+    //1.生成验证码
+    //6位数 0-9 a-f
+    window.onload = function () {
+      fuzhi();
+    };
+    let code = () => {
+      let arr = ["0", "1", "2", "3", "4", "5", "6", "a", "b", "c", "d"];
+      let str = "";
+      for (let i = 0; i < 6; i++) {
+        let number = Math.floor(Math.random() * arr.length + 0);
+        str += arr[number];
+        console.log(str);
+      }
+      return str;
+    };
+
+    let fuzhi = function () {
+      let res = code();
+      document.getElementById("checkCode").innerHTML = res;
+    };
+
+    let change = document.getElementById("change");
+    change.onclick = function () {
+      fuzhi();
+    };
+
+    let btn = document.getElementById('button')
+    button.onclick = function(){
+        let code = document.getElementById('checkCode').innerText
+        let inputcode = document.getElementById('inputcode').value
+        if(code != inputcode){
+            alert('错误')
+            let inputcode = ' '
+            return false
+        }
+    }
+  </script>
+</html>

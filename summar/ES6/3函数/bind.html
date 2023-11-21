@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //第一个参数是改变this指针
+    function show() {
+      console.log(this.name);
+    }
+    show.call({
+        name:'houdunren'
+    })
+
+    let fn = show.bind({name:'123'})
+    fn()
+    console.log(fn)
+  </script>
+</html>

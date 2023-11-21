@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+</body>
+<script>
+    let s = "We are happy."
+    var replaceSpace = function (s) {
+        let count = 0;
+        let Olength = s.length;
+        for (let i = 0; i < Olength; i++) {
+            if (s[i] == ' ') {
+                ++count
+            }
+        }
+        let Nlength = Olength + count * 2
+        let result = new Array(Nlength).fill(0)
+
+        for (let i = Olength - 1, j = Nlength - 1; i >= 0; i--, j--) {
+            if (s[i] !== ' ') {
+                result[j] = s[i]
+            }
+            else {
+                result[j--] = 0;
+                result[j--] = 2;
+                result[j] = '%'
+            }
+        }
+       return result.join('')
+    };
+    console.log(replaceSpace(s))
+   
+</script>
+
+</html>

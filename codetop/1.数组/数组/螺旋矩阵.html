@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let n = 3
+    var generateMatrix = function (n) {
+        let res = new Array(n).fill(0).map((item) => new Array(n).fill(0))
+        let limit = n * n;
+        let num = 1
+        let i = 0;
+        let j = 0;
+        let direction = 1;
+        while (num <= limit) {
+            switch (direction) {
+                case 1:
+                    res[i][j++] = num++;
+                    if (j >= n || res[i][j]) {
+                        --j;
+                        ++i;
+                        direction = 2;
+                    }
+                    break;
+                case 2:
+                    res[i++][j] = num++;
+                    if (i >= n || res[i][j]) {
+                        --i;
+                        --j;
+                        direction = 3
+                    }
+                    break;
+                case 3:
+                    res[i][j--] = num++;
+                    if (j < 0 || res[i][j]) {
+                        --i;
+                        ++j;
+                        direction = 4;
+                    }
+                    break;
+                case 4:
+                    res[i--][j] = num++;
+                    if (i < 0 || res[i][j]) {
+                        ++i;
+                        ++j;
+                        direction = 1;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return res
+    };
+    console.log(generateMatrix(n))
+</script>
+
+</html>

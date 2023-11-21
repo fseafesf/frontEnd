@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      height: 200px;
+      width: 200px;
+      background: pink;
+    }
+  </style>
+  <body>
+    <div class="box"></div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <a href="http://www.baidu.com">百度</a>
+    <form action="http://www.baidu.com">
+        <input type="submit" />
+    </form>
+  </body>
+  <script>
+    //event就是一个事件对象 写在侦听函数小括号的形参里
+    //事件对象是事件的一系列相关数据的集合 跟事件相关的 比如鼠标点击事件里包含了鼠标的相关信息
+    let box = document.querySelector(".box");
+    /* box.onclick = function(event){
+        console.log(event);
+    } */
+    //event.target 触发事件的对象 this返回的是绑定事件的对象
+    box.addEventListener("click", (event) => {
+      console.log(event.target);
+    });
+
+    let ul = document.querySelector("ul");
+    ul.addEventListener('click' , function(e){
+        console.log(this);
+        //e.target 指向我们点击的那个事件 点击哪个元素返回那个元素 this绑定了谁就返回谁
+        console.log(e.target);
+        console.log('123');
+    } )
+
+    //e.preventDefault 阻止某些行为
+    let a =document.querySelector('a');
+    a.addEventListener('click' , e => {
+        e.preventDefault()
+    })
+  </script>
+</html>

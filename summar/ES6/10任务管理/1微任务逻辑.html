@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    setTimeout(() => {
+      console.log("定时器");
+      new Promise((resolve, rehect) => {
+        console.log("Timeout Promise");
+        resolve();
+      }).then(() => {
+        console.log("Timeout then");
+      });
+    }, 0);
+    new Promise((resolve, rehect) => {
+      console.log("Promise");
+      resolve();
+    }).then(() => {
+      console.log("then");
+    });
+    console.log("同步任务");
+  </script>
+</html>

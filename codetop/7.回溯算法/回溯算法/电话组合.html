@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let digits = "23"
+    var letterCombinations = function (digits) {
+        const length = digits.length;
+        if(!length) return []
+        const map = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+        let res = [];
+        let path = [];
+        function back(digits, length, index) {
+            console.log(index)
+            if (path.length == length) {
+                res.push(path.join(''));
+                return;
+            }
+            for (const v of map[digits[index]]) {
+               path.push(v)
+               back(digits,length,index+1)
+               path.pop()
+            }
+        }
+        back(digits, length, 0);
+       console.log(res)
+    };
+    letterCombinations(digits)
+</script>
+
+</html>

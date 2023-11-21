@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset系列</title>
+</head>
+<style>
+    div{
+        height: 200px;
+        width: 200px;
+        background: pink;
+        margin: 200px;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+<script>
+    //offset 以带有定位的父亲为准
+    //offsetWidth 是包含padding + border + width
+    let div = document.querySelector('div')
+    console.log(div.offsetTop);
+    console.log(div.offsetLeft);
+    console.log(div.offsetHeight);
+    //parentNode 返回的是最近一级的父亲 不管有没有定位
+    console.log(div.offsetParent);
+</script>
+</html>

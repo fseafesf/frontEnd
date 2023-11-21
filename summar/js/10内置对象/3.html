@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date对象</title>
+  </head>
+  <body></body>
+  <script>
+    let date = new Date();
+    console.log(date);
+    let data1 = new Date("2019-10-1 8:8:7"); //字符串类型的参数
+    console.log(data1);
+    console.log(date.getFullYear());
+    console.log(date.getDay());
+    console.log(date.getMonth() + 1);
+
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    console.log(`今天是${year} 年${month}月`);
+
+    function getTimer() {
+      let time = new Date();
+      let h = time.getHours();
+      h = h < 10 ? "0" + h : h;
+      let m = time.getMinutes();
+      m = m < 10 ? "0" + m : m;
+      let s = time.getSeconds();
+      if (s < 10) {
+        s = "0" + s;
+      }
+      return `${h} : ${m} : ${s}`;
+    }
+    console.log(getTimer());
+  </script>
+</html>

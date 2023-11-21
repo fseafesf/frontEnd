@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素属性值</title>
+</head>
+<body>
+    <div id="demo"></div>
+</body>
+<script>
+    //element.属性 元素本身自带的
+    //element.getAttribute 程序员自己添加的属性
+    let div = document.getElementById('demo');
+    console.log(div.getAttribute('id'));
+
+    //设置属性值
+    div.id = 'path'
+    div.setAttribute('index' , '123')
+
+    div.setAttribute('data-index' , 22)
+    div.setAttribute('data-age' , 22)
+    console.log(div.dataset.index);
+</script>
+</html>

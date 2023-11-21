@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function fn2() {
+        return '123'
+    }
+    async function fn1() {
+        console.log('fn1')
+        let res = await fn2()
+        console.log('fn1 end')
+    }
+    fn1()
+    new Promise((reslove, reject) => {
+        console.log('promise1')
+        reslove()
+    }).then(() => {
+        console.log('promise then')
+    })
+
+</script>
+
+</html>

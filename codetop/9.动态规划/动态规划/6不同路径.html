@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let m = 3, n = 7
+    var uniquePaths = function (m, n) {
+        // dp[i][j]表示从(0,0)到(m,n)有多少条路劲
+        let dp = Array(m).fill().map(item => Array(n).fill(0))
+        for (let i = 0; i < n; i++) {
+            dp[0][i] = 1
+        }
+        for (let i = 0; i < m; i++) {
+            dp[i][0] = 1
+        }
+        for (let i = 1; i < m; i++) {
+            for (let j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+            }
+        }
+        console.log(dp)
+        return dp[m - 1][n - 1]
+
+    };
+
+    uniquePaths(m, n)
+</script>
+
+</html>

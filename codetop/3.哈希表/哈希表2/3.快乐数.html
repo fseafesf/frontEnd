@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let n = 19
+    var isHappy = function (n) {
+        if(n === 1){
+            return true
+        }
+        let totalcount;
+        let map = new Map();
+        while (totalcount !== 1) {
+            let arr = ('' + (totalcount || n)).split('')
+            console.log(arr)
+            totalcount = arr.reduce((pre, cur) => {
+                return +pre + cur*cur
+            },0)
+           
+            if (map.get(totalcount)) {
+                return false
+            }
+            map.set(totalcount,true)
+        }
+        return true
+    };
+    isHappy(n)
+</script>
+
+</html>

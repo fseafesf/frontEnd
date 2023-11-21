@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let problems = [
+        { id: 1, content: '这是第一道题目', type: 2, difficultType: 1 },
+        { id: 2, content: '这是第二道题目', type: 1, difficultType: 2 },
+        { id: 3, content: '这是第三道题目', type: 3, difficultType: 2 },
+        { id: 4, content: '这是第四道题目', type: 4, difficultType: 3 },
+        { id: 5, content: '这是第五道题目', type: 5, difficultType: 1 },
+        { id: 6, content: '这是第六道题目', type: 4, difficultType: 3 },
+        { id: 7, content: '这是第七道题目', type: 1, difficultType: 2 },
+        { id: 8, content: '这是第八道题目', type: 2, difficultType: 1 },
+        { id: 9, content: '这是第九道题目', type: 3, difficultType: 3 },
+    ]
+    let page = {
+        problems: [
+            { id: 1, content: '这是第一道题目', type: 2, difficultType: 1 },
+            { id: 2, content: '这是第二道题目', type: 1, difficultType: 2 },
+            { id: 3, content: '这是第三道题目', type: 3, difficultType: 2 },
+            { id: 4, content: '这是第四道题目', type: 4, difficultType: 3 },
+            { id: 5, content: '这是第五道题目', type: 5, difficultType: 1 },
+            { id: 6, content: '这是第六道题目', type: 4, difficultType: 3 },
+            { id: 7, content: '这是第七道题目', type: 1, difficultType: 2 },
+            { id: 8, content: '这是第八道题目', type: 2, difficultType: 1 },
+            { id: 9, content: '这是第九道题目', type: 3, difficultType: 3 },
+        ]
+    }
+    function group(arr) {
+        let result = [];
+        let map = {};
+        for (let item of arr) {
+            let { type } = item
+            if (!map[type]) {
+                result.push({
+                    type,
+                    data: [item]
+                })
+                map[type] = item
+            }
+            else {
+                for (let i = 0; i < result.length; i++) {
+                    let typeObject = result[i];
+                    if (typeObject.type === type) {
+                        typeObject.data.push(item)
+                        break;
+                    }
+                }
+            }
+        } return result.sort((a, b) => {
+            return a.type - b.type
+        })
+    }
+    // console.log(group(page.problems))
+    // console.log(page.problems)
+    let str = "这是一道()填空题，() ()"
+    let reg = /(\(\))|(\_+)/g
+    console.log(str.match(reg))
+</script>
+
+</html>

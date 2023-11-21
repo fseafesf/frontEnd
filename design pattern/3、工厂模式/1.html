@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function User(role, pages) {
+        this.role = role;
+        this.pages = pages;
+    }
+
+    function userFactory(role) {
+        let map = {
+            "admin": new User("admin", ["home", "news-manage"]),
+            "superAdmin": new User("superAdmin", ["home", "user-maage"])
+        }
+        return map[role]
+    }
+
+    class User {
+        constructor(role, pages) {
+            this.role = role;
+            this.pages = pages
+        }
+        static userFactory(role) {
+            let map = {
+                "admin": new User("admin", ["home", "news-manage"]),
+                "superAdmin": new User("superAdmin", ["home", "user-maage"])
+            }
+            return map[role]
+        }
+    }
+    console.log(userFactory("admin"))
+</script>
+
+</html>

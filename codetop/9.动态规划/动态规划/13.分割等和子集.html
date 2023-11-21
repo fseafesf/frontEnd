@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [1, 5, 11, 5]
+    var canPartition = function (nums) {
+        let sum = nums.reduce((pre, cur) => {
+            return pre + cur
+        }, 0)
+        if (sum & 1) return false
+        let target = sum / 2
+        let dp = new Array(target + 1).fill(0)
+        // 先遍历物品 后遍历背包 单层dp数组 背包得倒序遍历
+        for (let i = 0; i < nums.length; i++) {
+            for (let j = target; j >= nums[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i])
+                if (dp[j] === target) {
+                    return true
+                }
+            }
+        }
+        return dp[target] === target
+    };
+</script>
+
+</html>

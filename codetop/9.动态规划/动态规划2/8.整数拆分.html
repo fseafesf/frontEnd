@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var integerBreak = function (n) {
+      let db = Array(n + 1).fill(0);
+      db[2] = 1;
+      for (let i = 3; i <= n; i++) {
+        // 取几个越相近的数得到的乘机会越大
+        for (let j = 1; j <= i / 2; j++) {
+          db[i] = Math.max(db[i], Math.max(j * (i - j), j * db[i - j]));
+        }
+      }
+      return db[n];
+    };
+  </script>
+</html>

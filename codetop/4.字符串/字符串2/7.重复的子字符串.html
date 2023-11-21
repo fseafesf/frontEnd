@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "abcabcabcabc"
+    var repeatedSubstringPattern = function (s) {
+        let length = s.length
+        if (length === 0) {
+            return false
+        }
+        function getNext(s) {
+            let next = [];
+            let j = -1;
+            next.push(j)
+
+            for (let i = 1; i < s.length; i++) {
+                while (j >= 0 && s[i] !== s[j + 1]) {
+                    j = next[j]
+                }
+                if (s[i] === s[j + 1]) {
+                    j++;
+                }
+                next[i] = j
+            }
+            return next
+        }
+        let next = getNext(s)
+        if (next[length - 1] !== -1 && length % (length - (next[length - 1] + 1)) === 0) {
+            return true
+        }
+
+        return false
+    };
+    repeatedSubstringPattern(s)
+</script>
+
+</html>

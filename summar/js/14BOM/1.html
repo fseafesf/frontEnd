@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM概述</title>
+  </head>
+  <style>
+    div {
+      height: 200px;
+      width: 200px;
+      background: pink;
+    }
+  </style>
+  <body>
+    <script>
+      //window.onload只能注册一个 有多个则以最后一个为准
+      //load等页面内容全部加载完毕
+      window.onload = function () {
+        let btn = document.querySelector("button");
+        btn.onclick = () => {
+          console.log(123);
+        };
+      };
+    </script>
+    <button>点击我</button>
+    <div></div>
+  </body>
+  <script>
+    //浏览器对象模型
+
+    //仅当DOM加载完成时 不包括图片 样式 flash
+    document.addEventListener("DOMContentLoaded", () => {});
+
+    //调整窗口大小
+    let div = document.querySelector("div");
+    window.addEventListener("resize", () => {
+      console.log(123);
+      if (window.innerWidth <= 800) {
+        div.style.display = "none";
+      } else {
+        div.style.display = "block";
+      }
+    });
+  </script>
+</html>

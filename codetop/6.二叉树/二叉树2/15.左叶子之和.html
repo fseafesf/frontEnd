@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var sumOfLeftLeaves = function (root) {
+        const getSum = node => {
+            if (node == null) return 0;
+            let leftVal = getSum(node.left);
+            let rightVal = getSum(node.right);
+            let val = 0;
+            if (node.left !== null && node.left.left == null && node.left.right == null) { // 判断有无左叶子结点
+                val += node.left.val;
+            }
+            let sum = leftVal + rightVal + val;
+            return sum;
+        }
+        return getSum(root);
+    };
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "anagram", t = "nagaram";
+    var isAnagram = function (s, t) {
+        if(s.length !== t.length) return false;
+        let map = {}, result = true;
+        for(let key of s){
+            map[key] = map[key] ? ++map[key] : 1
+        }
+        for(let k of t){
+            if(map[k]){
+                map[k] -- ;
+            }
+            else {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    };
+    console.log(isAnagram(s,t))
+
+    // 核心思路 : 对第一个字符串进行遍历 然后使用哈希表的形式给存储起来
+    // 再对第二个字符串进行遍历 假如集合里有的话 则数量减一 没有则直接返回false
+</script>
+
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>下拉菜单</title>
+  </head>
+  <style>
+    .nav {
+      display: flex;
+      height: 200px;
+    }
+    .nav li {
+      width: 100px;
+      position: relative;
+    }
+    .nav li ul {
+      display: none;
+      list-style: none;
+      width: 100px;
+      position: absolute;
+      right: 1px;
+    }
+  </style>
+  <body>
+    <ul class="nav">
+      <li>
+        <a>微博</a>
+        <ul>
+          <li>微博1</li>
+          <li>微博2</li>
+        </ul>
+      </li>
+      <li>
+        <a>qqq</a>
+        <ul>
+          <li>qqq</li>
+          <li>qqq</li>
+        </ul>
+      </li>
+      <li>
+        <a>www</a>
+        <ul>
+          <li>www</li>
+          <li>www</li>
+        </ul>
+      </li>
+      <li>
+        <a>eee</a>
+        <ul>
+          <li>eee</li>
+          <li>eee</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+  <script>
+    let ul = document.getElementsByClassName("nav")[0];
+    let lis = ul.children;
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].onmouseover = function () {
+        this.children[1].style.display = "block";
+      };
+      lis[i].onmouseout = function () {
+        this.children[1].style.display = "none";
+      };
+    }
+  </script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let n = 10
+    var integerBreak = function (n) {
+        // dp[i]是下标为i的最大城际值
+        let dp = new Array(n + 1).fill(0)
+        dp[2] = 1
+        for (let i = 3; i <= n; i++) {
+            for (let j = 1; j <= i / 2; j++) {
+                dp[i] = Math.max(dp[i], dp[i - j] * j, (i - j) * j)
+            }
+        }
+        return dp[n]
+    };
+
+    integerBreak(n)
+</script>
+
+</html>

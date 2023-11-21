@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //完全数据的字面量
+    let hd = Object.create(null, {
+      name: {
+        value: "xj",
+      },
+    });
+    console.log(hd);
+
+    {
+      let hd = {
+        show() {
+          console.log("后盾人");
+        },
+      };
+      console.log(hd);
+      hd.__proto__.render = function () {
+        console.log("xj");
+      };
+      hd.render();
+      console.log(hd.__proto__ === Object.prototype);
+
+      let ar = [];
+    }
+
+    {
+      let hd = {
+        data: [1, 56, 76, 234, 87, 2, 0],
+      };
+      Object.setPrototypeOf(hd, {
+        max() {
+          return this.data.sort((a, b) => b - a)[0];
+        },
+      });
+
+      console.log(hd);
+      let xj = {
+        lessons: { js: 100, php: 89, css: 65, node: 98 },
+        get data() {
+          return Object.values(this.lessons);
+        },
+      };
+      console.log(xj.constructor);
+      console.log(hd.max.call(xj));
+    }
+    
+  </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 主要解决一个全局使用的类频繁创建和销毁，占用内存
+
+    let singleTon = (function () {
+        let instance
+        function User(name, age) {
+            this.name = name
+            this.age = age
+        }
+        return function (name, age) {
+            if (!instance) {
+                // 创建实例
+                instance = new User(name, age)
+            }
+            return instance
+        }
+    })()
+
+    singleTon('a',18) === singleTon('a',18)
+</script>
+
+</html>

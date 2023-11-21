@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var findItinerary = function (tickets) {
+      let result = ["JFK"];
+      let obj = {};
+      // 获得from的to数组
+      for (let ticket of tickets) {
+        const [from, to] = ticket;
+        if (!obj[from]) {
+          obj[from] = [];
+        }
+        obj[from].push(to);
+      }
+      for (const city in obj) {
+        obj[city].sort();
+      }
+      function backTracking() {
+        if (result.length == tickets.length + 1) {
+          return true;
+        }
+        if (
+          !obj[result[result.length - 1]] ||
+          !obj[result[result.length - 1]].length
+        ) {
+          return false;
+        }
+        for (let i = 0; i < obj[result[result.length - 1]].length; i++) {
+         // 遍历当前结果集里的最后一位
+          let city = obj[result[result.length - 1]][i];
+          obj[result[result.length - 1]].splice(i, 1);
+          result.push(city);
+          if (backTracking()) {
+            return true;
+          }
+          result.pop();
+          obj[result[result.length - 1]].splice(i, 0, city);
+        }
+      }
+      backTracking();
+      return result;
+    };
+  </script>
+</html>

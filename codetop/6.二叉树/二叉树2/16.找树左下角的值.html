@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var findBottomLeftValue = function (root) {
+      let maxPath = 0;
+      let result = null;
+      function findLeft(node, depth) {
+        if (node.left == null && node.right == null) {
+          if (maxPath < depth) {
+            maxPath = depth;
+            result = node.val;
+          }
+        }
+
+        node.left && findLeft(node.left, depth + 1);
+        node.right && findLeft(node.right, depth + 1);
+      }
+      findLeft(root, 1);
+      return result;
+    };
+  </script>
+</html>

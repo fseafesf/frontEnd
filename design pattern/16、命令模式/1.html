@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Receiver{
+        // 接受类
+        excute(){
+            console.log("接收者执行请求")
+        }
+    }
+
+    class Command{
+        constructor(receiver){
+            this.receiver = receiver
+        }
+        // 命令类
+        excute(){
+            console.log("命令对象 => 接收者如何处理")
+            this.receiver.excute()
+        }
+    }
+
+    class Invoker{
+        // 发布类
+        constructor(command){
+            this.command = command
+        }
+        order(){
+            console.log("发布请求")
+            this.command.excute()
+        }
+    }
+
+    const order = new Command(new Receiver());
+    const client = new Invoker(order);
+    client.order()
+</script>
+</html>

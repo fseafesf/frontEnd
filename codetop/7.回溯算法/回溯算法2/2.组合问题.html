@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var combine = function (n, k) {
+      let res = [];
+      let path = [];
+      const backtracking = (startIndex) => {
+        console.log(startIndex)
+        if (path.length == k) {
+          res.push([...path]);
+          return;
+        }
+        for (let i = startIndex; i <= n; i++) {
+          path.push(i);
+          backtracking(i + 1);
+          path.pop();
+        }
+      };
+      backtracking(1);
+      return res;
+    };
+    combine(4,2)
+  </script>
+</html>

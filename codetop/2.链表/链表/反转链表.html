@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body></body>
+<script>
+  // TODO:反转链表
+  var reverseList = function (head) {
+    if (!head || !head.next) return head
+    let pre = null;
+    let cur = head;
+    let tmp = null;
+    while (cur) {
+      tmp = cur.next
+      cur.next = pre
+      pre = cur
+      cur = tmp
+    }
+    return pre
+  };
+  //  核心思路 : 将链表的下一个结点保存
+  //  然后将当前结点的下一个节点指向另一边
+  //  随后将当前结点赋值给指向结点
+  //  将保存的下一个结点赋值给当前结点
+</script>
+
+</html>

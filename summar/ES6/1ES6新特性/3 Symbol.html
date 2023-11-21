@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symbol</title>
+  </head>
+  <body></body>
+  <script>
+    //Symbol 是原始数据类型，不是对象 可以接受一个字符串作为参数，为新创建的 Symbol 提供描述
+    //声明定义Symbol的几种方法
+    let hd = Symbol("这是hd");
+    let edu = Symbol("这是hd");
+    console.log(hd);
+    console.log(hd.description);
+    console.log(hd === edu);
+
+    //如果找到，返回该symbol；否则将创建一个新的symbol，key作为description，添加到注册表中并返回。
+    let cms = Symbol.for("hdcms");
+    let cms1 = Symbol.for("hdcms");
+    console.log(cms === cms1);
+    console.log(cms.description);
+
+    /* 作用：从symbol注册表中，返回指定symbol的description，没有则返回undefined。
+       返回值：如果有description，返回；否则返回undefined。
+       注意：
+           1、如果使用Symbol()定义的symbol，则不会添加到注册表中；使用Symbol.for()定义的symbol则会添加到注册表中。
+           2、Symbol.for(key)和Symbol.keyFor(sym)都是在Symbol注册表中进行查找。【不会找到Symbol()定义的symbol】 
+    */
+
+    console.log(Symbol.keyFor(cms));
+    console.log(Symbol.keyFor(hd));
+
+    //Symbol 的使用
+    let user1 = {
+        name:'李四',
+        key:Symbol()
+    }
+    let user2 = {
+        name:'张三',
+        key:Symbol()
+    }
+    let user3 = {
+        name:'王五',
+        key:Symbol()
+    }
+    let grade = {
+        [user1.key]:{js:100,css:35},
+        [user2.key]:{js:10,css:35},
+        [user3.key]:{js:99,css:38}
+    }
+    console.log(grade[user1['key']]);
+
+
+    {
+        let sy = Symbol('12')
+        let obj = {
+            [sy] : 123
+        }
+        console.log(obj);
+    }
+
+    //Symbol 值作为属性名时，该属性是公有属性不是私有属性，可以在类的外部访问。
+    //但是不会出现在 for...in 、 for...of 的循环中，也不会被 Object.keys() 、 Object.getOwnPropertyNames() 返回。
+    //如果要读取到一个对象的 Symbol 属性，
+    //可以通过 Object.getOwnPropertySymbols() 和 Reflect.ownKeys() 取到。
+    let symbol = Symbol("sym");
+            let obj = {
+              name: "symbol_name",
+              [symbol]: "唯一性"
+            };
+            
+            // 访问对象的基本属性
+            for (const key in obj) {
+              console.log(key); //name
+            }
+            for (const key of Object.keys(obj)) {
+              console.log(key); //name
+            }
+            
+            // 访问对象中的私有属性
+            for (const key of Object.getOwnPropertySymbols(obj)) {
+              console.log(key); // Symbol(sym)
+            }
+            
+            for (const key of Reflect.ownKeys(obj)) {
+            // 访问对象的所有属性
+              console.log(key); // name 、Symbol(sym)
+            }
+  </script>
+</html>

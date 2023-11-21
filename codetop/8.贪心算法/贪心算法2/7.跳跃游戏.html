@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let nums = [2, 3, 1, 1, 4];
+    var canJump = function (nums) {
+      let cover = 0;
+      if (nums.length == 1) return true;
+      for (let i = 0; i <= cover; i++) {
+        // 小于等于cover 每次cover更新 会重新执行
+        console.log(cover);
+        cover = Math.max(cover, i + nums[i]);
+        if (cover >= nums.length - 1) return true;
+      }
+      return false;
+    };
+    canJump(nums);
+  </script>
+</html>

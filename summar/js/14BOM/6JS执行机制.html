@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js同步与异步</title>
+  </head>
+  <body></body>
+  <script>
+    //同步 程序执行的顺序和任务排列的顺序是一致的
+    //异步 同时进行多个任务
+    //本质区别 各个流程的执行顺序不同
+    console.log(1);
+    setTimeout(function () {
+      console.log(3);
+    }, 3000);
+    console.log(2);
+    setTimeout(function () {
+      console.log(4);
+    }, 3000);
+    console.log(5);
+
+    //同步任务放在主线程执行栈中执行
+    //异步任务放在任务队列中执行
+
+    //Js执行机制 先执行执行栈中的同步任务
+    //执行栈中的所有同步任务执行完毕 ， 系统就会依次序读取任务队列 中的异步任务，
+    //于是被读取的异步任务结束等待状态进入执行栈开始执行
+  </script>
+</html>

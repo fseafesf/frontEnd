@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素之表单属性设置</title>
+</head>
+<body>
+    <input type="text" />
+    <button id="btn">点击</button>
+
+</body>
+<script>
+    let btn = document.getElementById('btn');
+    let input = document.querySelector('input');
+    btn.onclick = function () {
+        input.value = '12'
+        //如果想要某个表单被禁用 不能再点击 disabled
+       btn.disabled = true
+       //this指向的是事件函数的调用者
+    }
+</script>
+</html>

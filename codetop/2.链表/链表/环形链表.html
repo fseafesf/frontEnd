@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var hasCycle = function (head) {
+        let map = new Map();
+        while (head) {
+            if (map.get(head)) return true
+            map.set(head, true)
+            head = head.next
+        }
+        return false
+    };
+
+    //核心思路 : 对遍历过去的结点保存在map表中 
+    //如果在循环过程中 出现了map表中的值 则出现了环形
+</script>
+
+</html>

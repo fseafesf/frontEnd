@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let p1 = Promise.resolve()
+    console.log(p1)
+
+    let p2 = Promise.resolve('hello');
+    let p3 = Promise.resolve(p2)
+    console.log(p3 )
+
+    let p4 = Promise.resolve('123')
+        .then((res) => {
+            return new Promise((reslove, reject) => {
+                reslove(res + '456')
+            })
+        })
+        .then((res) => {
+            console.log(res)
+        })
+
+    let p5 = new Promise((reslove, reject) => {
+        setTimeout(() => {
+            reslove(5)
+            console.log(456)
+        }, 3000)
+    })
+        .then((res) => {         
+            console.log(res)
+            console.log(123)
+        })
+</script>
+
+</html>

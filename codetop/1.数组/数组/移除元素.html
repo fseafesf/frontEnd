@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [3,2,2,3], val = 3;
+    var removeElement = function (nums, val) {
+        let len = nums.length;
+        for(let i =0;i<len;i++){
+            if(nums[i] == val){
+                for(let j =i+1 ;j<len;j++){
+                    nums[j-1] = nums[j]
+                }
+                i--;
+                len--;
+            }
+        }
+        return len
+    };
+    console.log(removeElement(nums,val))
+
+    // 核心思路 : 在循环的过程中 假如遇到了和目标值一样的值
+    // 就将从它之后的元素依次往前进一个 同时将当前下标减一 长度减一
+</script>
+
+</html>

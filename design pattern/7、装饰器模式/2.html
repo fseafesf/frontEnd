@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="filmBtn">万里归途</button>
+</body>
+<script>
+    Function.prototype.before = function (beforeFn) {
+        let _this = this
+        return function () {
+            beforeFn.apply(this, arguments)
+            return _this.apply(this, arguments)
+        }
+    }
+
+    Function.prototype.after = function (afterFn) {
+        let _this = this
+        return function () {
+            let result = _this.apply(this, arguments)
+            afterFn.apply(this, arguments)
+            return result
+        }
+    }
+    const filmBtn = document.querySelector('#filmBtn')
+    function getData() {
+        console.log('获取信息')
+    }
+    function log() {
+        console.log('上传')
+    }
+    function render() {
+        console.log('逻辑')
+    }
+    log = log.before(getData)
+    render = render.before(log)
+    filmBtn.onclick = function () {
+        render()
+    }
+</script>
+
+</html>

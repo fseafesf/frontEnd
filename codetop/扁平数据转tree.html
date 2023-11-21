@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [
+        { id: 1, name: '部门一', pid: 0 },
+        { id: 2, name: '部门二', pid: 1 },
+        { id: 3, name: '部门三', pid: 1 },
+        { id: 4, name: '部门四', pid: 3 },
+        { id: 5, name: '部门五', pid: 4 }
+    ]
+
+    function arrToTree(items) {
+        let result = [];
+        let map = {};
+        for (const item of items) {
+            map[item.id] = { ...item, children: [] }
+        }
+       
+        for (const item of items) {
+            let { id, name, pid } = item
+            const treeItem = map[id];
+            if (pid === 0) {
+                result.push(treeItem)
+            }
+            else{
+                if(!pid){
+                    map[pid] = {
+                        children : []
+                    }
+                }
+                map[pid].children.push(treeItem)
+            }
+        }
+        console.log(JSON.stringify(result))
+    }
+
+    arrToTree(arr)
+
+   
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const hdcms = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("第一个异步");
+      }, 1000);
+    });
+
+    const houdunren = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("第一个异步");
+      }, 2000);
+    });
+
+     Promise.all([hdcms, houdunren]).then((res) => {
+        console.log(res)
+     });
+     
+    /* ['后盾人', '湘军'].map(name => {
+        return ajax('url' + name)
+    }) */
+
+    Promise.race([hdcms , houdunren]).then(res => console.log(res))
+  </script>
+</html>

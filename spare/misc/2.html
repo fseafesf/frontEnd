@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .div1 {
+      width: 100px;
+      padding: 50px;
+      background-color: black;
+      border: 10px solid red;
+      margin: 30px;
+    }
+    @keyframes move {
+      0% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+
+    .move {
+      animation: move 0.8s alternate 1 linear;
+    }
+  </style>
+
+  <body>
+    <div class="div1" style="float: left">test1</div>
+    <div style="clear: left">test2</div>
+    <button onclick="click">点击</button>
+    <ul id="move"></ul>
+  </body>
+  <script>
+    let ul = document.querySelector("#move");
+    let btn = document.querySelector("button");
+    btn.addEventListener("click", function () {
+      console.log(123);
+      console.log(ul.classList);
+      ul.innerHTML = `<div class="move">
+        <li>123</li>
+      <li>dfd</li>
+      <li>asdas</li>
+      <li>sadas</li>
+      <li>123</li>
+      <li>dfd</li>
+      <li>asdas</li>
+      <li>sadas</li>
+      <li>123</li>
+      <li>dfd</li>
+      <li>asdas</li>
+      <li>sadas</li>
+      <li>dfd</li>
+      <li>asdas</li>
+      <li>sadas</li>
+      <li>123</li>
+      <li>dfd</li>
+      <li>asdas</li>
+      <li>sadas</li>
+      <li>123</li>
+      <li>dfd</li>
+      <li>asdas</li>
+      <li>sadas</li>
+        </div>
+      `;
+      //   ul.classList.add("move");
+      // //   ul.clientHeight;
+      //   ul.classList.remove('move')
+      //   setTimeout(() => {
+      //    ul.classList.remove('move')
+      //   },0)
+      console.log(document.querySelector(".move"));
+    });
+    function click() {}
+    var x = 1;
+    var x = 3;
+    var arr = [];
+    console.log(parseInt("20.2aa"));
+
+    // let str = "\ta\017bc";
+    // console.log(str);
+
+    // const 必须被赋值
+
+    // var date = new Date("2022-09-28");
+    // console.log(date)
+
+    let getUserInfo = function () {
+      return new Promise((reslove, reject) => {
+        reslove({
+          name: "cxp",
+          age: 18,
+        });
+      });
+    };
+
+    // let getDetail = function (data) {
+    //     return new Promise((reslove, reject) => {
+    //         data = { ...data, home: 'cq' }
+    //         reslove(data)
+    //     })
+    // }
+    // getUserInfo().then(getDetail).then(res => {
+    //     console.log(res)
+    // })
+
+    async function fn1() {
+      let a = await 1;
+      console.log(123);
+      console.log(a);
+    }
+
+    function fn2() {
+      console.log("fn2");
+    }
+
+    function fn3() {
+      console.log("fn3");
+    }
+
+    async function run() {
+      await fn1();
+      fn2();
+      fn3();
+    }
+    run();
+
+    const obj = {
+      Fbillid: "15",
+      姓名: "aa",
+      年度: "2023",
+      月份: "6",
+    };
+
+    let { Fbillid, ...reset } = obj;
+    console.log(reset);
+  </script>
+</html>

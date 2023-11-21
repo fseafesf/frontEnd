@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /*  function quene(num) {
+      let promise = Promise.resolve();
+      num.map((v) => {
+        promise = promise.then(() => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(v)
+                resolve()
+            } , 1000)
+          });
+        });
+      });
+    }
+    quene([1, 2, 3, 4, 4]); */
+
+    //reduce
+    function quene(num) {
+      num.reduce((promise, n) => {
+        return promise.then((resolve) => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              console.log(n);
+              resolve();
+            }, 1000);
+          });
+        });
+      }, Promise.resolve());
+    }
+    quene([1, 2, 3, 4]);
+  </script>
+</html>

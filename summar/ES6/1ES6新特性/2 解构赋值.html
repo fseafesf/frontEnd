@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let [a, b, c] = [1, 2, 3];
+    console.log(a, b, c);
+
+    //数组的本质也是对象 可以通过索引来进行解构赋值
+    let { 0: e, 1: d, 2: f } = [1, 2, 3];
+    console.log(e, d, f);
+    /* {
+      let [a, [[b], c]] = [1, [[2], 3]];
+      console.log(a, b, c);
+    }
+
+    let [foo = true] = [];
+    console.log(foo);
+
+    {
+      let [a = 1, b] = [2, 3];
+      console.log(a, b);
+    }
+
+    {
+      let [a, ...b] = [1, 2, 3];
+      console.log(a, b);
+    } */
+
+    {
+      let obj = {
+        a: 123,
+        b: 456,
+      };
+      for (let key in obj) {
+        console.log(obj[key]);
+      }
+      Object.entries(obj).map(([a1, b1]) => {
+        console.log(a1, b1);
+      });
+
+      //对象解构 得有对象里的属性
+      let { a, b } = obj;
+      console.log(a, b);
+    }
+
+    {
+      let obj = {
+        username: "zs",
+        age: 18,
+      };
+      let { username: abc, age: edf } = obj;
+      console.log(abc, edf);
+    }
+
+    {
+      let [a, b, c, d, e] = "hello";
+      let { length: len } = "hello";
+      console.log(len);
+      console.log(a, b, c, d, e);
+    }
+
+    {
+      const node = {
+        loc: {
+          start: {
+            line: 1,
+            column: 5,
+          },
+        },
+      };
+      let {
+        loc,
+        loc: { start: s },
+        loc: {
+          start: { line: l, column: c },
+        }
+      } = node;
+      console.log(s, l, c);
+    }
+    //  console.log(Array instanceof Object)
+
+    //如果对一个已经定义的变量进行解构赋值，要将解构赋值的整个语句放在()里面
+    {
+      let obj = {};
+      let b = { a: 1, b1: 1 };
+      ({ a: obj.number1, b1: obj.number2 } = b);
+      console.log(obj);
+    }
+  </script>
+</html>

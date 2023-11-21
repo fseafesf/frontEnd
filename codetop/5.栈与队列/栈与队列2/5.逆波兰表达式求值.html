@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let tokens = ["4", "13", "5", "/", "+"]
+    var evalRPN = function (tokens) {
+        let map = {
+            "+": (a, b) => (+a) + (+b),
+            "-": (a, b) => (+b) - (+a),
+            "*": (a, b) => (+a) * (+b),
+            "/": (a, b) => parseInt(b / a)
+        }
+        let res = [];
+        for (let token of tokens) {
+            console.log(token)
+            if (!map[token]) {
+                res.push(token)
+            }
+            else {
+                res.push(map[token](res.pop(), res.pop()))
+                console.log(res)
+            }
+
+        }
+        console.log(res)
+        return res
+    };
+    evalRPN(tokens)
+</script>
+
+</html>

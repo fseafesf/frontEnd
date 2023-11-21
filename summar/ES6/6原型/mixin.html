@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function extend(sub, sup) {
+      sub.prototype = Object.create(sup.prototype);
+      sub.prototype.constructor = sub;
+    }
+    function User(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    User.prototype.show = function () {
+      console.log(this.name, this.age);
+    };
+    const Request = {
+      ajax() {
+        return "请求后台";
+      },
+    };
+    const Address = {
+      add() {
+        console.log("123");
+      },
+    };
+    const Credit = {
+      __proto__: Request,
+
+      total() {
+        console.log(this.__proto__);
+        console.log(this.__proto__.ajax() + "统计积分");
+      },
+    };
+
+    function Admin(...args) {
+      User.apply(this, args);
+    }
+    extend(Admin, User);
+    Object.assign(Admin.prototype, Request ,Credit, Address);
+    console.log(Admin.prototype);
+    let hd = new Admin("向军", 19);
+    hd.show();
+    hd.total(); //统计积分
+
+    hd.add();
+  </script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "  hello world  "
+    var reverseWords = function (s) {
+        let strArr = Array.from(s)
+        removeExtraSpaces(strArr)
+        reverse(strArr, 0, strArr.length - 1)
+        let start = 0
+        for (let i = 0; i <= strArr.length; i++) {
+            if (strArr[i] === " " || i == strArr.length) {
+                reverse(strArr, start, i - 1)
+                start = i + 1
+            }
+        }
+        return strArr.join('')
+    };
+
+    function removeExtraSpaces(strArr) {
+        let slowIndex = 0;
+        let fastIndex = 0;
+        while (fastIndex < strArr.length) {
+            if (strArr[fastIndex] === " " && (fastIndex === 0 || strArr[fastIndex - 1] === " ")) {
+                fastIndex++
+            }
+            else {
+                strArr[slowIndex++] = strArr[fastIndex++]
+            }
+        }
+        strArr.length = strArr[slowIndex - 1] === " " ? slowIndex - 1 : slowIndex // 快慢指针移除空格 移除尾部空格
+    }
+
+    function reverse(s, start, end) {
+        let left = start;
+        let right = end
+        while (left < right) {
+            [s[left], s[right]] = [s[right], s[left]]
+            left++;
+            right--;
+        }
+    }
+
+    reverseWords(s)
+</script>
+
+</html>

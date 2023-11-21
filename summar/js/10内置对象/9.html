@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>根据位置返回字符</title>
+  </head>
+  <body></body>
+  <script>
+    // let str = 'andy';
+    // console.log(str.charAt(3));
+    // console.log(str.charCodeAt(2));
+    // console.log(str[2]);
+
+    //统计出现最多的字符和次数
+    let str1 = "abcoefoddfdovsdogo";
+    let o ={};
+    for(let i =0;i<str1.length;i++){
+        let chars = str1.charAt(i)
+        console.log(chars);
+        if(o[chars]){
+            o[chars] ++;
+        }
+        else{
+            o[chars] = 1;
+        }
+    }
+    console.log(o);
+    //遍历对象
+    let max = 0
+    let ch = ''
+    // let x = {}
+    for(let key in o){
+        // x[key] = o[key]
+        if(o[key] > max){
+            max = o[key]
+            ch = key
+        }
+    }
+    console.log(max , ch);
+    // console.log(x);
+  </script>
+</html>

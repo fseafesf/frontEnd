@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比较运算符 短路运算</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // == 会默认转换数据类型 只要值相等就行 判断
+    console.log(3 == '3');
+    // === 不会默认转换数据类型 全等
+    console.log(3 === '3');
+
+    //逻辑与短路运算 如果表达式1 结果为真 则返回表达式2  如果表达式1为假 则返回表达式1
+    console.log(1 && 455);
+    console.log(0 && 1+2 && 456);
+
+     //逻辑或短路运算 如果表达式1 结果为真 则返回表达式1  如果表达式1为假 则返回表达式2
+     console.log(123 || 456);
+     let num =0;
+     console.log(123 || num ++);
+     console.log(0 || num ++);
+     console.log(num);
+</script>
+</html>

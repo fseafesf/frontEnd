@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Subject {
+        constructor() {
+            this.observer = []
+        }
+
+        add(observer) {
+            this.observer.push(observer)
+        }
+
+        remove(observer) {
+            this.observer = this.observer.filter((item) => {
+                item !== observer
+            })
+        }
+
+        notify() {
+            this.observer.forEach(item => {
+                item.update();
+            })
+        }
+    }
+
+    // 观察者
+    class Observer {
+        constructor(name) {
+            this.name = name
+        }
+        update() {
+            console.log("update" + this.name)
+        }
+    }
+
+    const sub = new Subject();
+    const observer1 = new Observer("o1");
+    const observer2 = new Observer("o2");
+    sub.add(observer1);
+    sub.add(observer2);
+</script>
+
+</html>

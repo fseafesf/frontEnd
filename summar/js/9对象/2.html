@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>new关键字</title>
+  </head>
+  <body></body>
+  <script>
+    function Person(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    let p1 = new Person("cxp", 18, "男");
+    console.log(typeof p1);
+    //new 关键字执行过程
+    //1. new构造函数可以在内存中创建一个空的对象
+    //2. this就会指向刚才创建的对象
+    //3. 执行构造函数的代码
+    //4. 返回对象
+  </script>
+</html>

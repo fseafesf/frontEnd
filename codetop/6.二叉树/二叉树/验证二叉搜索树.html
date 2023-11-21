@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var isValidBST = function (root) {
+        let pre = null;
+        function inOrder(node) {
+            if (node === null) {
+                return true
+            }
+            let left = inOrder(node.left);
+            if (pre !== null && pre.val >= node.val)
+                return false;
+            pre = node;
+            let right = inOrder(node.right)
+            return left && right
+        }
+        return inOrder(root)
+    }
+</script>
+
+</html>

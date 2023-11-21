@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    var maxSubArray = function (nums) {
+        if (nums.length === 1) {
+            return nums[0]
+        }
+
+        let length = nums.length
+        let dp = Array(length).fill(0)
+        let res = nums[0]
+        dp[0] = nums[0]
+        for (let i = 1; i < length; i++) {
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i])
+            res = Math.max(res, dp[i])
+        }
+        return res
+    };
+</script>
+
+</html>

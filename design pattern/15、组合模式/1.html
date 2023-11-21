@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 组合模式在对象间形成树形结构
+    // 组合模式中基本对象和组合对象被一致对待
+    // 无需关心对象有多少层 只需在根部进行调用
+
+    const Folder = function (folder) {
+        this.folder = folder
+        this.lists = [] // 保存子文件夹或者文件
+    }
+
+    Folder.prototype.add = function (res) {
+        this.lists.push(res)
+    }
+
+    Folder.prototype.scan = function () {
+        console.log("扫描文件夹", this.folder)
+        for (let i = 0; i < this.lists.length; i++) {
+            this.lists[i].scan()
+        }
+    }
+
+
+    const File = function(file){
+        this.file = file
+    }
+
+    // 组合 都有scan这个方法
+    File.prototype.scan = function(){
+        console.log("开始扫描文件" , this.file)
+    }
+    // 根文件夹
+    let rootFolder = new Folder('root')
+    let jsFolder = new Folder('js')
+    let cssFolder = new Folder('css')
+    let htmlFolder = new Folder('html')
+
+
+    let html4 = new File("html4")
+    let html1 = new File("html1")
+    let html2 = new File("html2")
+    let html3 = new File("html3")
+
+    let css3 = new File("css3")
+    let css1 = new File("css1")
+
+    let js3 = new File("js3")
+    let js4 = new File("js4")
+
+    rootFolder.add(jsFolder);
+    rootFolder.add(cssFolder);
+    rootFolder.add(htmlFolder);
+
+    htmlFolder.add(html1)
+    htmlFolder.add(html2)
+    htmlFolder.add(html3)
+    htmlFolder.add(html4)
+
+    cssFolder.add(css1)
+    cssFolder.add(css3)
+
+    jsFolder.add(js3)
+    jsFolder.add(js4)
+
+    rootFolder.scan()
+</script>
+
+</html>

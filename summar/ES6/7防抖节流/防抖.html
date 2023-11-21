@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      height: 200px;
+      width: 200px;
+      margin: 0 auto;
+      background: pink;
+      text-align: center;
+      font-size: 30px;
+      line-height: 200px;
+      color: #fff;
+    }
+  </style>
+  <body>
+    <div class="box"></div>
+  </body>
+  <script>
+    let myBox = document.querySelector(".box");
+    let num = 1;
+    function moveFun() {
+      num++;
+      this.innerText = num;
+    }
+    myBox.addEventListener("mousemove", debunce(moveFun, 1000));
+
+    function debunce(callback, time) {
+      let timer = null;
+      let args = arguments;
+      return function () {
+        let that = this;
+        clearTimeout(timer);
+        timer = setTimeout(callback.bind(that), time);
+      };
+    }
+  </script>
+</html>

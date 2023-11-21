@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial=1.0,user-scalable=no"
+    />
+    <title>查看全图</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div class="blur-box">
+      <img
+        class="blur-img"
+        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F07.imgmini.eastday.com%2Fmobile%2F20180717%2F20180717221449_f908566137c38a753a8e55cf0d44a372_7.jpeg&refer=http%3A%2F%2F07.imgmini.eastday.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640181264&t=feffa7375872c64946a936481abf913b"
+      />
+      <canvas id="canvas">不支持canvas</canvas>
+      <div class="button" id="show-button">SHOW</div>
+    </div>
+    <script>
+      const _w = document.body.clientWidth;
+      const _h = document.body.clientHeight;
+
+      const showButton = document.getElementById("show-button");
+
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = _w;
+      canvas.height = _h;
+
+      const radius = 50;
+      let clipRegion;
+      let timer = null;
+
+      let image = new Image();
+      image.src =
+        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2F07.imgmini.eastday.com%2Fmobile%2F20180717%2F20180717221449_f908566137c38a753a8e55cf0d44a372_7.jpeg&refer=http%3A%2F%2F07.imgmini.eastday.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640181264&t=feffa7375872c64946a936481abf913b";
+      image.onload = () => {
+        // 随机生成裁剪区位置
+        clipRegion = {
+          x: Math.random() * (_w - 2 * radius) + radius,
+          y: Math.random() * (_h - 2 * radius) + radius,
+          r: radius,
+        };
+        draw(image, clipRegion);
+      };
+
+      function draw(image, clipRegion) {
+        ctx.clearRect(0, 0, _w, _h);
+        ctx.save();
+        setClipingRegion(clipRegion);
+        ctx.drawImage(image, 0, 0, _w, _h);
+        ctx.restore();
+      }
+
+      function setClipingRegion(clipRegion) {
+        ctx.beginPath();
+        ctx.arc(clipRegion.x, clipRegion.y, clipRegion.r, 0, Math.PI * 2);
+        ctx.clip();
+      }
+
+      showButton.addEventListener(
+        "click",
+        () => {
+          // 隐藏按钮
+          showButton.style.display = "none";
+
+          timer = setInterval(function () {
+            clipRegion.r += 20;
+            draw(image, clipRegion);
+            if (clipRegion.r >= 2 * Math.max(_w, _h)) {
+              clearInterval(timer);
+              timer = null;
+            }
+          }, 30);
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

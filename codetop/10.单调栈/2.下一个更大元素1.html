@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums1 = [4, 1, 2], nums2 = [1, 3, 4, 2]
+    var nextGreaterElement = function (nums1, nums2) {
+        let length1 = nums1.length;
+        let length2 = nums2.length
+        let result = Array(length1).fill(-1)
+        let stack = []
+        let map = {}
+        for (let i = 0; i < length1; i++) {
+            map[nums1[i]] = i
+        }
+
+        stack.push(0)
+        for (let i = 1; i < length2; i++) {
+            if (nums2[i] < nums2[get(stack)]) {
+                stack.push(i)
+            }
+            else if (nums2[i] === nums2[get(stack)]) {
+                stack.push(i)
+            }
+            else {
+                while (stack.length !== 0 && nums2[i] > nums2[get(stack)]) {
+                    if (map[nums2[get(stack)]] > -1) {
+                        let index = map[nums2[get(stack)]];
+                        console.log(index)
+                        result[index] = nums2[i]
+
+                    }
+                    stack.pop()
+                }
+                stack.push(i)
+            }
+        }
+
+
+        function get(stack) {
+            return stack[stack.length - 1]
+        }
+
+       console.log(result) 
+    };
+
+    nextGreaterElement(nums1,nums2)
+</script>
+
+</html>

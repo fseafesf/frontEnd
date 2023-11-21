@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let Person = {
+      name: "张三",
+    };
+    let proxy = new Proxy(Person, {
+      get(target, key) {
+        if (key in target) {
+          return target[key];
+        } else {
+          throw new ReferenceError(key + "dose not exist");
+        }
+      },
+      set(target, property, value) {
+        if (!target[property]) {
+          target[property] = value;
+        } else {
+          throw new Error("已存在");
+        }
+      },
+    });
+    console.log(proxy.name);
+    proxy.name = '李四'
+    proxy.age = 18;
+    console.log(proxy.age);
+  </script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 主要解决一个全局使用的类频繁创建和销毁，占用内存
+
+    class singleTon{
+        constructor(name , age){
+            if(!singleTon.instance){
+                this.name = name
+                this.age = age
+                singleTon.instance = this
+            }
+            return singleTon.instance
+        }
+    }
+
+
+    async function fn(params) {
+        console.log(1);
+        let a =await 2;
+        console.log(a)
+        console.log(3)
+    }
+    fn()
+    console.log(4)
+</script>
+
+</html>

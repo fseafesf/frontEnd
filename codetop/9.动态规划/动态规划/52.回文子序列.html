@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var longestPalindromeSubseq = function (s) {
+        let length = s.length
+        let dp = Array.from(Array(length), () => Array(length).fill(0))
+        for (let i = 0; i < length; i++) {
+            dp[i][i] = 1
+        }
+        for (let i = length - 1; i >= 0; i--) {
+            for (let j = i + 1; j < length; j++) {
+                if (s[i] === s[j]) {
+                    dp[i][j] = dp[i + 1][j - 1] + 2
+                }
+                else if (s[i] !== s[j]) {
+                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1])
+                }
+            }
+        }
+        return dp[0][length - 1]
+    };
+</script>
+
+</html>

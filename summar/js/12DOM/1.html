@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="time">2019-02-01</div>
+    <div class="box">盒子</div>
+    <div class="box">盒子</div>
+    <ul>
+      <li class="1">123</li>
+      <li>123</li>
+      <li>123</li>
+      <li>123</li>
+      <li>123</li>
+    </ul>
+  </body>
+  <script>
+    let time = document.getElementById("time");
+    time.onclick = function () {
+      //打印元素对象 更好的查看里面的属性和方法
+      console.dir(time);
+      console.log(typeof time);
+    };
+    let lis = document.getElementsByTagName("li");
+    for (let i = 0; i < lis.length; i++) {
+      console.log(lis[i]);
+    }
+    //如果页面中只有一个li 返回的还是伪数组的形式
+    let ul = document.getElementsByTagName("ul")[0];
+
+    let boxs = document.getElementsByClassName("box");
+    console.log(boxs);
+
+    //querySelector返回的是第一个元素对象 querySelectorAll 返回的是所有的
+    let boxs1 = document.querySelectorAll(".box");
+    console.log(boxs1);
+  </script>
+</html>

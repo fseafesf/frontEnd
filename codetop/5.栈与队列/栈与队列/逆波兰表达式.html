@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let tokens = ["2", "1", "+", "3", "*"];
+    var evalRPN = function (tokens) {
+        const calculate = new Map()
+        calculate.set("+", (a, b) => a * 1 + b * 1);
+        calculate.set("-", (a, b) => b - a);
+        calculate.set("*", (a, b) => a * b);
+        calculate.set("/", (a, b) => b / a | 0)
+        let res = [];
+        for(let n of tokens){
+            console.log(n)
+            if(!calculate.has(n)){
+                res.push(n)
+                continue;
+            }
+            res.push(calculate.get(n)(res.pop(),res.pop()))
+        }
+        return res
+    };
+
+    console.log(evalRPN(tokens))
+
+
+</script>
+
+</html>

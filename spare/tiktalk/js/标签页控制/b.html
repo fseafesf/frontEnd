@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn" data-name="123">测试按钮</button>
+</body>
+<script src="./channel.js"></script>
+<script>
+    const channel = createChannel('musci')
+    btn.addEventListener('click', function (e) {
+
+        if (channel.listeners.size === 0) {
+            window.open(`./a.html?name=${btn.dataset.name}`, '_blank')
+        }
+        else{
+            channel.postMessage({
+                musicName:btn.dataset.name
+            })
+        }
+    })
+</script>
+
+</html>

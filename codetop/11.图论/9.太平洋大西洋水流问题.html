@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let heights = [
+      [1, 2, 2, 3, 5],
+      [3, 2, 3, 4, 4],
+      [2, 4, 5, 3, 1],
+      [6, 7, 1, 4, 5],
+      [5, 1, 1, 2, 4],
+    ];
+
+    var pacificAtlantic = function (heights) {
+      let dir = [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+      ];
+
+      let m = heights.length;
+      let n = heights[0].length;
+
+      let pacific = Array(m)
+        .fill()
+        .map(() => Array(n).fill(false));
+      let atlantic = Array(m)
+        .fill()
+        .map(() => Array(n).fill(false));
+
+      function dfs(visited, x, y) {
+        if (visited[x][y]) return;
+        visited[x][y] = true;
+        for (let i = 0; i < 4; i++) {
+          let nextX = x + dir[i][0];
+          let nextY = y + dir[i][1];
+          if (nextX < 0 || nextX >= m || nextY < 0 || nextY >= n) continue;
+          if (heights[nextX][nextY] < heights[x][y]) continue;
+          dfs(visited, nextX, nextY);
+        }
+      }
+
+      for (let i = 0; i < m; i++) {
+        dfs(pacific, i, 0);
+        dfs(atlantic, i, n - 1);
+      }
+
+      for (let i = 0; i < n; i++) {
+        dfs(pacific, 0, i);
+        dfs(atlantic, m - 1, i);
+      }
+
+      let result = [];
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (pacific[i][j] && atlantic[i][j]) {
+            result.push([i, j]);
+          }
+        }
+      }
+
+      return result;
+    };
+
+    pacificAtlantic(heights);
+  </script>
+</html>

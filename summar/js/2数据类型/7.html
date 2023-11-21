@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型转换 转化为数字类型</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //parseInt(变量) 将字符型转为数字型
+    let age = '5.1314'
+    console.log(parseInt(age));
+    console.log(parseInt('120px')); // 120 会去掉px单位
+
+    //parseFloat(变量) 将字符型转为数字型 得到的是小数 浮点数
+    console.log(parseFloat(age));
+
+    //Number()
+    let str1 = '123';
+    console.log(Number(str1));
+
+    //利用算数运算隐式转换 - * /
+    console.log('123' / 1);
+    console.log('15' * 5);
+</script>
+</html>

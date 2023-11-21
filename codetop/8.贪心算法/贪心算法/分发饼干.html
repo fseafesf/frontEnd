@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let g = [1, 2, 3], s = [1, 1]
+    var findContentChildren = function (g, s) {
+        g.sort((a,b) => a-b);
+        s.sort((a,b) => a-b)
+        let res = 0;
+        let index = s.length - 1;
+        for (let i = g.length - 1; i >= 0; i--) {
+            if (index >= 0 && s[index] >= g[i]) {
+                res ++;
+                index--;
+            }
+        }
+        return res
+    };
+    console.log(findContentChildren(g, s))
+</script>
+
+</html>

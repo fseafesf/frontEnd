@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function fib1(n) {
+        if (n == 1 || n == 2) {
+            return 1
+        }
+        else return fib1(n - 1) + fib1(n - 2)
+    }
+    function find() {
+        let n = 3;
+        let start = new Date().getTime()
+        while (fib1(n) < Math.pow(2, 63) - 1) {
+            n = n + 1;
+        }
+        let end = new Date().getTime() - start
+        return {
+            n , end
+        }
+    }
+    console.log(find())
+</script>
+
+</html>

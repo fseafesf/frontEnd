@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>原子画布与自动向下滚动示例</title>
+    <style>
+      #canvas {
+        border: 1px solid black;
+        overflow-y: scroll;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 原子画布 -->
+    <div id="canvas">
+      <canvas id="atomicCanvas" width="400" height="1000"></canvas>
+    </div>
+
+    <script>
+      // 获取原子画布及其容器
+      const container = document.getElementById("canvas");
+      const atomicCanvas = document.getElementById("atomicCanvas");
+      const atomicCtx = atomicCanvas.getContext("2d");
+
+      // 虚拟列表相关变量
+      const itemHeight = 50; // 列表项目的高度
+      let scrollTop = 0; // 当前滚动位置
+      let autoScroll = true; // 是否自动滚动
+
+      // 更新离屏 canvas 内容的函数
+      function updateOffscreenCanvas() {
+        const offscreenCanvas = document.createElement("canvas");
+        offscreenCanvas.width = atomicCanvas.width;
+        offscreenCanvas.height = atomicCanvas.height;
+
+        const offscreenCtx = offscreenCanvas.getContext("2d");
+
+        // 根据 scrollTop 计算可视区域内的列表项索引范围
+        const startItemIndex = Math.floor(scrollTop / itemHeight);
+        const endItemIndex =
+          startItemIndex + Math.ceil(container.offsetHeight / itemHeight);
+
+        // 清空离屏 canvas
+        offscreenCtx.clearRect(
+          0,
+          0,
+          offscreenCanvas.width,
+          offscreenCanvas.height
+        );
+
+        // 在离屏 canvas 上绘制可见的列表项
+        for (let i = startItemIndex; i <= endItemIndex; i++) {
+          const y = i * itemHeight - scrollTop;
+          offscreenCtx.fillStyle = i % 2 === 0 ? "pink" : "lightblue";
+          offscreenCtx.fillRect(0, y, atomicCanvas.width, itemHeight);
+        }
+
+        // 将离屏 canvas 绘制到原子画布上
+        atomicCtx.clearRect(0, 0, atomicCanvas.width, atomicCanvas.height);
+        atomicCtx.drawImage(offscreenCanvas, 0, 0);
+
+        if (autoScroll) {
+          // 自动向下滚动
+          container.scrollTop = scrollTop + itemHeight;
+        }
+      }
+
+      // 监听原子画布的滚动事件
+      container.addEventListener("scroll", (event) => {
+        scrollTop = event.target.scrollTop;
+        updateOffscreenCanvas();
+      });
+
+      // 开始自动滚动
+      function startAutoScroll() {
+        autoScroll = true;
+        updateOffscreenCanvas();
+      }
+
+      // 停止自动滚动
+      function stopAutoScroll() {
+        autoScroll = false;
+      }
+
+      // 初始化时更新离屏 canvas
+      updateOffscreenCanvas();
+    </script>
+  </body>
+</html>

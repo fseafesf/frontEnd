@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+</body>
+<script>
+    let nums = [4, 6, 7, 7]
+    var findSubsequences = function (nums) {
+        let res = [];
+        let path = [];
+        function back(startIndex) {
+            if (path.length > 1) {
+                res.push([...path])
+            }
+            let used = [];
+            for (let i = startIndex; i < nums.length; i++) {
+                if ((path.length > 0 && nums[i] < path[path.length - 1]) || used[nums[i] + 100]) { // 范围里有-100每个值加上一百
+                    continue
+                }
+                path.push(nums[i]);
+                used[nums[i] + 100] = true;
+                back(i + 1);
+                path.pop();
+            }
+        }
+        back(0);
+        return res;
+    };
+    console.log(findSubsequences(nums))
+</script>
+
+</html>

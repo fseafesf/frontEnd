@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    async function fn1() {
+        console.log('fn1')
+        // return new Promise((reslove,reject) => {
+        //     console.log('fn1 promise')
+        //     reslove('fn1 end')
+        // })
+        return '123'
+    }
+    async function fn2() {
+        console.log('fn2 start')
+        await 1
+        console.log('fn2 end')
+    }
+
+    fn2()
+
+    new Promise((reslove, reject) => {
+        console.log('promise')
+        reslove()
+    }).then(() => {
+        console.log('then')
+    })
+
+
+    // async function fn1() {
+    //     console.log('fn1')
+    //     return Promise.resolve('fn1 end')
+      
+    // }
+    // console.log(fn1())
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let n = 332
+    var monotoneIncreasingDigits = function (n) {
+        let s = n.toString().split("")
+
+        let length = s.length - 1;
+        let flag = 9;
+        for (let i = length; i > 0; i--) {
+            if (s[i - 1] > s[i]) {
+                flag = i;
+                s[i - 1] = (s[i - 1] - 1).toString()
+                s[i] = "9"
+            }
+        }
+
+        for (let i = flag; i < s.length; i++) {
+            s[i] = "9"
+        }
+        return +s.join('')
+    };
+
+    monotoneIncreasingDigits(n)
+</script>
+
+</html>

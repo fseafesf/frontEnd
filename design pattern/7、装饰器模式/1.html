@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Function.prototype.before = function (beforeFn) {
+        let _this = this
+        return function () {
+            // 前置函数调用
+            beforeFn.apply(this, arguments)
+
+            //再进行函数调用
+            return _this.apply(this, arguments)
+        }
+    }
+
+    Function.prototype.after = function (afterFn) {
+        let _this = this
+        return function () {
+            // 函数调用
+            let result = _this.apply(this, arguments)
+
+            //再进行后置函数调用
+            afterFn.apply(this, arguments)
+            return result
+        }
+    }
+    function test() {
+        console.log(111)
+    }
+
+    let test1 = test.before(function () {
+        console.log('000')
+    }).after(() => {
+        console.log(222)
+    })
+
+    test1()
+</script>
+
+</html>

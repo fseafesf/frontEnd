@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var getIntersectionNode = function (headA, headB) {
+        let pA = headA;
+        let pB = headB;
+        while (pA !== pB) {
+            pA = pA === null ? headB : pA.next;
+            pB = pB === null ? headA : pB.next;
+        }
+        return pA
+    };
+    // 核心思路 : 第一条链表依次走 走到null 上后再走第二条链表
+    // 第二条链表同理 假如有相同的结点 就会相遇 一定得走到null 不然会死循环
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var replaceSpace = function (s) {
+        let length = s.length;
+        let count = 0
+        for (let i of s) {
+            if (i == " ") {
+                count++;
+            }
+        }
+        let arr = Array(length + 2 * count).fill(0);
+        let length2 = arr.length
+        console.log(length2, arr)
+        for (let i = length - 1, j = length2 - 1; i >= 0; i--, j--) {
+            if (s[i] == " ") {
+                arr[j--] = "0"
+                arr[j--] = "2"
+                arr[j] = "%"
+            }
+            else {
+                arr[j] = s[i]
+            }
+        }
+        console.log(arr);
+    };
+    // 注意一点 同时进行的话在一个for循环
+</script>
+
+</html>

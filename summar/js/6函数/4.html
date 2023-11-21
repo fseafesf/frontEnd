@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例</title>
+  </head>
+  <body></body>
+  <script>
+    //交换
+    function change(arr) {
+      let newArr = [];
+      for (let i = arr.length - 1; i > -1; i--) {
+        newArr[newArr.length] = arr[i];
+      }
+      return newArr;
+    }
+    console.log(change([1, 2, 3, 4, 5]));
+
+    //冒泡排序
+    function sort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+          let temp;
+          if (arr[j] < arr[j + 1]) {
+            temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+    console.log(sort([1, 2, 3, 4, 5]));
+
+    //函数调用另一个函数
+    function fn1() {
+      console.log(11);
+      fn2();
+    }
+    fn1();
+    function fn2() {
+      console.log(22);
+    }
+  </script>
+</html>

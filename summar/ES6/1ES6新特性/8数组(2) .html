@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //fill
+    console.log(Array(5).fill("123"));
+    console.log([1, 2, 3, 4].fill("123", 1, 2));
+
+    //slice 原数组不改变
+    {
+      let arr = [1, 2, 3, 4, 5];
+      console.log(arr.slice(1, 2));
+    }
+
+    {
+      let arr = [1, 2, 3, 4, 5];
+      console.log(arr.splice(0, 3, "hdcms"), arr);
+    }
+    let array = [1, 2, 3, 4];
+    function move(array, from, to) {
+      const newArray = [...array];
+      let s_arr = newArray.splice(from, 1);
+      newArray.splice(to, 0, ...s_arr);
+      return newArray;
+    }
+
+    //清空数组
+    {
+      let hd = [1, 2, 3, 4, 5];
+      console.log(hd.copyWithin(2, 1, 3));
+      console.log(
+        hd.findIndex((item) => {
+          return item === 2;
+        })
+      );
+
+      function find(arr, callback) {
+        for (let value of arr) {
+          if (callback(value)) {
+            return value;
+          }
+        }
+        return undefined;
+      }
+      console.log(
+        find(hd, function (item) {
+          return item === 3;
+        })
+      );
+    }
+
+    //排序
+    {
+      let arr = [2, 5, 1, 4];
+      console.log(
+        arr.sort((a, b) => {
+          return a - b;
+        })
+      );
+
+      Array.prototype.mySort = function (callback) {
+        for (let m of this) {
+          for (let n of this) {
+            if (callback(this[m] - this[n]) < 0) {
+              let temp = this[m];
+              this[m] = this[n];
+              this[n] = temp;
+            }
+          }
+        }
+      };
+
+      arr.mySort(function (a, b) {
+        return a - b;
+      });
+      for (let key in arr) {
+        console.log(key);
+      }
+    }
+
+    //迭代器
+    {
+      let arr = ["hd", "cms"];
+      let entries = arr.entries();
+      /* console.log(entries.next());
+      let {
+        done,
+        value: [a, b],
+      } = entries.next();
+      console.log(a, b); */
+      for (const [key, value] of entries) {
+        console.log(value);
+      }
+    }
+
+    //every some
+    {
+      const user = [
+        { name: "李四", js: 89 },
+        { name: "马六", js: 55 },
+        { name: "张三", js: 78 },
+      ];
+      let result = user.every((item) => {
+        return item.js > 60;
+      });
+      let result1 = user.some((item) => item.js > 60);
+      console.log(result1);
+
+      const array = [1, 2, 3, 4, 5];
+      // checks whether an element is even
+      const even = (element) => element % 2 === 0;
+      console.log(array.some(even));
+      // expected output: true
+    }
+
+    //filter
+    {
+        const user = [
+        { name: "李四", js: 89 },
+        { name: "马六", js: 55 },
+        { name: "张三", js: 78 },
+      ];
+
+      //手写filter
+      function Myfilter(arr , callback){
+        let newArray = [];
+        for(let value of arr){
+          if(callback(value.js)){
+            newArray.push(value)
+          }
+        }
+      }
+      
+      console.log(myFilter(user , function(value){
+        return value > 60
+      }));
+      
+    }
+  </script>
+</html>

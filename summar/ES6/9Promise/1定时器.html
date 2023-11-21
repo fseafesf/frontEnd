@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      height: 100px;
+      width: 100px;
+      background: pink;
+
+      position: absolute;
+    }
+  </style>
+  <body>
+    <div></div>
+  </body>
+  <script>
+    function interval(callback, delay = 100) {
+      let timer = setInterval(() => {
+        callback(timer);
+      }, delay);
+    }
+    interval((timer) => {
+      let div = document.querySelector("div");
+      let left = div.offsetLeft;
+      console.log(left);
+      div.style.left = left + 10 + "px";
+      if (left >= 200) {
+        clearInterval(timer);
+        interval(timer => {
+          let width = document.querySelector("div").style.width;
+          div.style.width = width - 10 + "px";
+        }, 1000);
+      }
+    });
+    console.log(123);
+  </script>
+</html>

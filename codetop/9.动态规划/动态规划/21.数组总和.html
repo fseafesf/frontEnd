@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [1, 2, 3], target = 4
+    var combinationSum4 = function (nums, target) {
+        let dp = new Array(target + 1).fill(0);
+        dp[0] = 1;
+        for (let i = 0; i <= target; i++) {
+            for (let j = 0; j < nums.length; j++) {
+                if (i - nums[j] >= 0) {
+                    dp[i] += dp[i - nums[j]]
+                }
+            }
+        }
+        return dp[target]
+    };
+    // 完全背包问题
+    // 外层是背包 内层是物品的时候 得到的结果是排列 因为两者都可以从0开始计算
+    // 完全背包 内层是背包时 得到组合 
+    // 而且遍历顺序可以从前往后 可以重复利用
+    
+
+    // 0-1背包问题 外层是物品 内层是背包 因为只有这样才能避免每次只放入一个物品
+    // 内层背包遍历的顺序是倒序 因为每个物品只能用一次 这样避免会重复加
+
+</script>
+
+</html>

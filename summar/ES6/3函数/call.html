@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function User(web, url) {
+      console.log(web + url + this.name);
+    }
+    let lisi = {
+      name: "李四",
+    };
+    User.call(lisi, "123", "houdunren");
+    User.apply(lisi , ['123' ,'houdunre'])
+
+    let arr = [1,2,3,4,5]
+    console.log(Math.max.call(...arr));
+    console.log(Math.max.apply(Math , arr));
+  </script>
+</html>

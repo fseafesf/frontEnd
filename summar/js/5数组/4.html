@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var twoSum = function (nums, target) {
+      let map = new Map();
+      for (let i = 0; i < nums.length; i++) {
+        let cmp = target - nums[i];
+        if (map.has(cmp)) {
+          return [i, map.get(cmp)];
+        }
+        map.set(nums[i], i);
+     
+      }
+     
+    };
+
+    twoSum([2, 7, 11, 15], 9);
+    console.log(twoSum([2, 7, 11, 15], 9));
+
+    var twoSum1 = function (nums, target) {
+      let map = new Map();
+      let n = nums.length;
+      for (let i = 0; i < n; i++) {
+        let match = target - nums[i];
+        if (map.has(match)) {
+          return [i, map.get(match)];
+        }
+        map.set(nums[i], i);
+      }
+    };
+    console.log(twoSum1([2, 7, 11, 15], 9));
+
+    let s = '{}{}[]()'
+    for(let i in s){
+        console.log(i)
+    }
+  </script>
+</html>

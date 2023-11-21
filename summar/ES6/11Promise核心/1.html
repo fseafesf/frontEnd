@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./HD.js"></script>
+  </head>
+  <style>
+    html,body{
+      height: 100px;
+    }
+    .header{
+      height: 100px;
+    }
+    .w{
+      width: 50px;
+      height: 30px;
+      margin: auto;
+    }
+  </style>
+  <body>
+   <div class="header">
+    <div class="w">123</div>
+   </div>
+  </body>
+  <script>
+    let p = new HD((resolve, reject) => {
+      /* setTimeout(() => {
+        resolve(123)
+        console.log('xiangjun')
+    },1000) */
+      reject(123);
+    })
+      .then(
+        (value) => {
+          console.log(value);
+          return "456" + value;
+        },
+        (reason) => {
+          console.log(reason);
+          return "p2";
+        }
+      )
+      .then()
+      .then((value) => {
+        console.log(value);
+      });
+    console.log("firsr");
+  </script>
+</html>

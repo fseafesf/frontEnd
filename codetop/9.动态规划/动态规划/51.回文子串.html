@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "abc"
+    var countSubstrings = function (s) {
+        let length = s.length
+        let dp = Array.from(Array(length), () => Array(length).fill(false)) // dp[i][j] 表示从i到j的字符串是否为回文子串
+        let result = 0
+        for (let i = length - 1; i >= 0; i--) {
+            for (let j = i; j < length; j++) {
+                if (s[i] !== s[j]) {
+                    dp[i][j] = false
+                }
+                else if(s[i] === s[j]){
+                    if(j-i<=1){
+                        result++;
+                        dp[i][j] = true;
+                    }
+                    else if(dp[i+1][j-1]){
+                        dp[i][j] = true
+                        result ++
+                    }
+                }
+            }
+        }
+        return result
+    };
+</script>
+
+</html>

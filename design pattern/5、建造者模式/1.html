@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Navbar {
+        init() {
+            console.log('navbar-init')
+        }
+
+        getData() {
+            return new Promise((reslove) => {
+                setTimeout(() => {
+                    reslove('get navbarData')
+                }, 2000);
+            })
+        }
+
+        render() { }
+    }
+
+    class List {
+        init() { }
+
+        getData() {
+            return new Promise((reslove) => {
+                setTimeout(() => {
+                    reslove('get listData')
+                }, 2000);
+            })
+        }
+
+        render() { }
+    }
+
+    class Creator {
+        async startBuild(builder) {
+            builder.init();
+            await builder.getData();
+            builder.render()
+        }
+    }
+
+    const op = new Creator()
+    op.startBuild(new Navbar())
+    op.startBuild(new List())
+</script>
+
+</html>

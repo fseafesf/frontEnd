@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background: pink;
+        position: absolute;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+  <script>
+    //e.clientX 鼠标相对于浏览器窗口可视区的X坐标
+    //e.clientY 鼠标相对于浏览器窗口可视区的Y坐标
+    //e.pageX 鼠标相当于文档页面的X坐标
+    //e.pageY 鼠标相当于文档页面的Y坐标
+    //e.screenX 鼠标相当于电脑屏幕的X坐标
+    //e.screenY 鼠标相当于电脑屏幕的Y坐标
+    /*  document.addEventListener("click", (e) => {
+      //   console.log(e.clientX);
+      //   console.log(e.clientY);
+      //   console.log(e.pageX);
+      //   console.log(e.pageY);
+      //   console.log(e.screenX)
+      //   console.log(e.screenY);;
+    }); */
+
+    let box = document.querySelector(".box");
+    document.addEventListener("mousemove", (e) => {
+      let x = e.pageX;
+      let y = e.pageY;
+      //   console.log(x, y);
+      box.style.left = x - 50 + "px";
+      box.style.top = y - 50 + "px";
+    });
+  </script>
+</html>

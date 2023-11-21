@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>123</div>
+    <div>123</div>
+    <div>123</div>
+  </body>
+  <script>
+    /* let array = new Array('123' , '456')
+    console.log(array);
+    console.log(array.join('')); */
+    let divs = document.querySelectorAll("div");
+    let divArr = Array.from(divs);
+    divArr.map((item) => {
+      item.style.background = "pink";
+    });
+
+    {
+      let array = [1, 2, 3, 4];
+      console.log(Object.prototype.toString.call(array));
+      let hd = array;
+      hd[1] = "a";
+      console.log(array);
+      console.log(hd);
+      let { 0: a, 1: b, 2: c } = array;
+      console.log(a, b, c);
+    }
+
+    {
+      let array = [1, 2, 3, 4];
+      console.log(array.length);
+      //Array.of 将参数中所有值作为元素形成数组。
+      console.log(Array.of(1, 2, 3));
+    }
+
+    //数组判断与转换
+    {
+      let array = [1, 2, 3, 4];
+      console.log(array.join(""));
+      let str = "hdcms";
+      console.log(str.split(""));
+
+      //Array.from() 将类数组对象或可迭代对象转化为数组。第二个参数是一个回调
+      console.log(Array.from(str));
+    }
+
+    //展开语法
+    {
+      let arr = ["cms", "houdunren"];
+      let arr1 = ["js", "css"];
+      console.log([...arr, ...arr1]);
+      function sum(...a) {
+        return a.reduce((pre, cur) => {
+          return pre + cur;
+        }, 0);
+      }
+      sum();
+    }
+
+    Array.prototype.map.call(divs, (item) => {
+      console.log(item);
+    });
+
+    const [...arr2] = "hdcms";
+    console.log(arr2);
+    console.log("hdcms" === ["h", "d", "c", "m", "s"]);
+
+    {
+      let a = [];
+      let arr = ["hdcms", "houdunren"];
+      a.push(...arr);
+      console.log(a);
+    }
+
+    
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boolean Undefined null</title>
+  </head>
+  <body></body>
+  <script>
+    let flag = true;
+    let flag1 = false;
+    console.log(flag + 1);
+
+    //undefined未定义数据类型
+    let str;
+    console.log(str);
+    let un = undefined;
+    console.log("ponk老手" + un);
+    console.log(1 + un); //undefine 和数值相加是NaN
+
+    //null空值
+    let space = null;
+    console.log('123' + space);
+    console.log(123 + null);// null 和数字相加是原数字
+  </script>
+</html>

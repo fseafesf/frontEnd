@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var addStrings = function (num1, num2) {
+        let arr1 = num1.split('').reverse()
+        let arr2 = num2.split('').reverse()
+        let length = Math.max(arr1.length, arr2.length)
+        let flag = 0;
+        let result = []
+        let sum
+
+        for (let i = 0; i < length; i++) {
+            arr1[i] = Number(arr1[i]) || 0;
+            arr2[i] = Number(arr2[i]) || 0;
+
+            sum = arr1[i] + arr2[i] + flag
+            if (sum >= 10) {
+                sum = sum % 10;
+                flag = 1
+                result.push(sum)
+            }
+            else {
+                flag = 0
+                result.push(sum)
+            }
+            if (i === length - 1 && flag) {
+                result.push(flag)
+            }
+        }
+        return result.reverse().join('')
+    };
+
+
+</script>
+
+</html>

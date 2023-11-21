@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "ab", k = 1;
+    var reverseStr = function (s, k) {
+        let arr = s.split('')
+        let length = s.length;
+        for (let i = 0; i < length; i += 2 * k) {
+            let start = i - 1;
+            let end = Math.min(length, i + k)
+            while (++start < --end) {
+                [arr[start], arr[end]] = [arr[end], arr[start]]
+            }
+        }
+        return arr.join('')
+    };
+    console.log(reverseStr(s, k))
+    reverseStr(s, k)
+
+
+</script>
+
+</html>

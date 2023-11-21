@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .tab {
+      width: 400px;
+      height: 300px;
+      margin: auto;
+    }
+    .tab_list ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .tab_list ul li {
+      margin-left: 15px;
+    }
+    .current {
+      color: red;
+    }
+    .item {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="tab">
+      <div class="tab_list">
+        <ul id="ul">
+          <li class="current">介绍</li>
+          <li>规格与包装</li>
+          <li>售后保障</li>
+          <li>手机社区</li>
+        </ul>
+      </div>
+      <div class="tab_con">
+        <div class="item" style="display: block">模块内容1</div>
+        <div class="item">模块内容2</div>
+        <div class="item">模块内容3</div>
+        <div class="item">模块内容4</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let lis = document.getElementById("ul").getElementsByTagName("li");
+    let items = document.querySelectorAll(".item");
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].setAttribute("index", i);
+      lis[i].onclick = function () {
+        for (let i = 0; i < lis.length; i++) {
+          lis[i].className = "";
+        }
+        this.className = "current";
+        //下面显示内容模块
+        let index = this.getAttribute('index')
+        console.log(index);
+        for(let j =0;j<items.length;j++){
+            items[j].style.display = 'none';
+            items[index].style.display = 'block'
+        }
+      };
+    }
+  </script>
+</html>

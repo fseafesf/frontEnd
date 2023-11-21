@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    const arr = [
+      {
+        id: 1,
+        label: "首页",
+        pagepermission: 1,
+      },
+      {
+        id: 2,
+        label: "首页",
+        pagepermission: 1,
+        children: [
+          {
+            id: 3,
+            label: "添加用户",
+            pagepermission: 1,
+          },
+          {
+            id: 4,
+            label: "用户列表",
+          },
+        ],
+      },
+      {
+        id: 5,
+        label: "5",
+        pagepermission: 1,
+      },
+      {
+        id: 6,
+        label: "6",
+        pagepermission: 2,
+      },
+      {
+        id: 7,
+        label: "6",
+      },
+    ];
+
+    function getNewArray(params) {
+      let arr = params.reduce((acc, item) => {
+        let { id, label, pagepermission } = item;
+        if (!!pagepermission) {
+          acc.push(item);
+        }
+        if (!!item.children) {
+          acc = [...acc, ...getNewArray(item.children)];
+          console.log(getNewArray(item.children));
+        }
+        return acc;
+      }, []);
+      return arr;
+    }
+    // console.log(getNewArray(arr))
+
+    let sum = function (...args) {
+      return args.reduce((pre, cur) => {
+        return pre + cur;
+      }, 0);
+    };
+
+    let proxy = new Proxy(sum, {
+      apply(target, thisArg, args) {
+        console.log(thisArg);
+        return Reflect.apply(target, thisArg, args);
+      },
+    });
+
+    console.log(proxy(1, 2, 3, 4, 5, 6));
+    // const p1 = new Promise((resolve) => {
+    //     setTimeout(() => {
+    //         resolve('resolve3');
+    //         console.log('timer1')
+    //     }, 0)
+    //     resolve('resovle1');
+    //     resolve('resolve2');
+    // }).then(res => {
+    //     console.log(res)
+    //     setTimeout(() => {
+    //         console.log(p1)
+    //     }, 1000)
+    // }).finally(res => {
+    //     console.log('finally', res)
+    // })
+
+    // async function fn1(){
+    //     let p1 = await new Promise((reslove,reject) => {
+    //         console.log(123)
+    //         reslove('123')
+    //     })
+    //     console.log(p1)
+
+    //     let p2 = await new Promise((reslove,reject) => {
+    //         reslove('456')
+    //     })
+    //     console.log(p2)
+
+    // }
+    // fn1()
+
+    var fn1 = function () {};
+
+    function fn2() {}
+
+    console.log(fn1.__proto__ === Function.prototype);
+    console.log(fn2.__proto__ === Function.prototype);
+
+    let str = "1a2b";
+    // let reg = /((?=.*\d)((?=.*[a-z]) | (?=.*[A-Z])))/
+    // let reg = /((?=.*\d)((?=.*[a-z]) | (?=.*[A-Z])))/
+    // console.log(reg.test(str))
+
+    for (let i = 1; i < 5; i++) {
+      (function () {
+        setTimeout(() => {
+          console.log(i);
+        }, 1000);
+      })(i);
+    }
+  </script>
+</html>

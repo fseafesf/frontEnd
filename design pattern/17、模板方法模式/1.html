@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let container = function (params) {
+        let F = function () {
+
+        }
+
+        F.prototype.init = function () {
+            this.getData();
+            this.render();
+        }
+
+        F.prototype.getData = params.getData || function () {
+            throw new Error("必须传入")
+        }
+
+        F.prototype.render = function () {
+            let list = this.getData()
+            console.log("render" , list)
+        }
+        return F
+    }
+
+    let myclass = container({
+        getData(){
+            console.log("获取数据")
+            return [1,2,3]
+        }
+    }) // 返回F
+    new myclass().init()
+
+    let myclass2 = container({
+        getData(){
+            console.log("获取即将上映的数据")
+            return [4,5,6]
+        }
+    })
+    let c2 = new myclass2()
+    c2.init()
+</script>
+
+</html>

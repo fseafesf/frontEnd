@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增数组元素</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = ['red' , 'pink' , 'green' , 'blue']
+    arr.length = 5
+    console.log(arr);
+
+    let arr1 = []
+    for(let i =0;i<10;i++){
+        arr1[i] = i
+    }
+    console.log(arr1);
+
+    //寻找
+    let arr2 = [23,4,53,64,1,22,89,9]
+    let newArr = []
+    for(let j =0;j<arr2.length;j++){
+        if(arr2[j]>10){
+            newArr[newArr.length] = arr2[j]
+        }
+    }
+    console.log(newArr);
+</script>
+</html>

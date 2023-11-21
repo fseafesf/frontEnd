@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var combinationSum2 = function (candidates, target) {
+      let res = [];
+      let path = [];
+      let length = candidates.length;
+      candidates.sort((a, b) => a - b);
+      function backTracking(startIndex, sum) {
+        if (sum == target) {
+          res.push([...path]);
+          return;
+        }
+
+        for (let i = startIndex; i < length; i++) {
+          let candidate = candidates[i];
+          if (i > startIndex && candidates[i] == candidates[i - 1]) continue; // 同一层相同元素 因为i大于startIndex所以每层的第一次比较是不会和上一层去比较的 只会在同一层比较
+          if (candidate > target - sum) break;
+          sum += candidate;
+          path.push(candidate);
+          backTracking(i + 1, sum);
+          sum -= candidate;
+          path.pop();
+        }
+      }
+
+      backTracking(0, 0);
+      return res;
+    };
+  </script>
+</html>

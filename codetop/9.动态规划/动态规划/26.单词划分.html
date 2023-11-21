@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let s = "leetcode", wordDict = ["leet", "code"]
+    var wordBreak = function (s, wordDict) {
+        let dp = new Array(s.length + 1).fill(false)
+        dp[0] = true
+        for (let i = 1; i <= s.length; i++) { // 先遍历背包 因为背包可以从1开始 如果先从物品0开始 会对应不上
+            for (let j = 0; j < i; j++) {
+                let word = s.slice(j, i)
+                if (wordDict.includes(word) && dp[j] === true) { // 如果截取i-j在字典里 且dp[j] == true 那么dp[i]也为true
+                    dp[i] = true
+                }
+
+            }
+        }
+        return dp[s.length]
+    };
+    wordBreak(s, wordDict)
+</script>
+
+</html>

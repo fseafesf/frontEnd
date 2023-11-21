@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var postorderTraversal = function (root) {
+        let res = [];
+        const dfs = (root) => {
+            if (root == null) return;
+            res.push(root.val);
+            dfs(root.left);
+            dfs(root.right)
+        }
+        dfs(root);
+        return res
+    }
+
+    var postorderTraversal = function (root) {
+        let res = [];
+        const dfs = (root) => {
+            if (root == null) return;
+            dfs(root.left);
+            res.push(root.val);
+            dfs(root.right)
+        }
+        return res
+    }
+
+    var postorderTraversal = function (root) {
+        let res = [];
+        const dfs = (root) => {
+            if (root == null) return;
+            dfs(root.left);
+            dfs(root.right);
+            res.push(root.val)
+        }
+        return res
+    }
+</script>
+
+</html>

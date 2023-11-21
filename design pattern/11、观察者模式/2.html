@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        display: flex;
+        height: 500px;
+    }
+
+    .box .left {
+        width: 150px;
+        background: skyblue;
+    }
+
+    .box .right {
+        flex: 1;
+        background: yellow;
+    }
+</style>
+
+<body>
+    <header class="header"></header>
+    <div class="box">
+        <div class="left">
+            <ul>
+                <li>首页</li>
+                <li>用户管理</li>
+                <li>权限管理</li>
+                <li>新闻管理</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="bread"></div>
+        </div>
+    </div>
+    <footer class="foot"></footer>
+</body>
+<script>
+    class Subject {
+        constructor() {
+            this.observer = []
+        }
+
+        add(observer) {
+            this.observer.push(observer)
+        }
+
+        remove(observer) {
+            this.observer = this.observer.filter((item) => {
+                item !== observer
+            })
+        }
+
+        notify(param) {
+            this.observer.forEach(item => {
+                item.update(param);
+            })
+        }
+    }
+
+    // 观察者
+    class Observer {
+        constructor(name) {
+            this.ele = document.querySelector(name)
+        }
+        update(param) {
+            this.ele.innerHTML = param
+        }
+    } 
+
+    const subject = new Subject()
+    const observer1 = new Observer(".bread")
+    const observer2 = new Observer(".header")
+    const observer3 = new Observer(".foot")
+    subject.add(observer1)
+    subject.add(observer2)
+    subject.add(observer3)
+
+    let oli = document.querySelectorAll(".left li");
+    for(let i =0;i<oli.length;i++){
+        oli[i].onclick = function(){
+            subject.notify(this.innerHTML)
+        }
+    }
+
+
+    
+</script>
+
+</html>

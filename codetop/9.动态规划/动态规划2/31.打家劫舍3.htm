@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var rob = function (root) {
+      let [res1, res2] = robTree(root);
+      return Math.max(res1, res2);
+    };
+
+    function robTree(root) {
+      if (root == null) return [0, 0];
+
+      let left = robTree(root.left);
+      let right = robTree(root.right);
+
+      let val1 = root.val + left[0] + right[0];
+
+      let val2 = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+
+      return [val2, val1];
+    }
+  </script>
+</html>

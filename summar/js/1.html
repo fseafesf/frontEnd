@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let blogs = [
+      {
+        author: "mike",
+        likes: 79,
+      },
+      {
+        author: "zs",
+        likes: 50,
+      },
+      {
+        author: "ls",
+        likes: 25,
+      },
+      {
+        author: "znx",
+        likes: 120,
+      },
+    ];
+
+    let res = blogs.reduce((acc, cur) => {
+      if (acc[cur.author]) {
+        acc[cur.author] += cur.likes;
+      } else {
+        acc[cur.author] = cur.likes;
+      }
+      return acc;
+    }, {});
+    console.log(res);
+
+    let res2 = Object.entries(res);
+    console.log(res2);
+
+    let res3 = res2.map(([author , likes]) => {
+        return `author:${author}  likes:${likes}`
+    })
+    console.log(res3);
+
+    let res4 = res3.reduce((pre , cur) => {
+        pre = pre["likes"] > cur["likes"] ? pre : cur
+        return pre
+    })
+    console.log(res4);
+  </script>
+</html>

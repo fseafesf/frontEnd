@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var findMode = function (root) {
+        let result = [];
+        let pre = root;
+        let maxCount = 1;
+        let count = 0;
+        function search(root) {
+            if (root == null) return
+            search(root.left)
+            if (pre.val == root.val) {
+                count = count + 1
+            }
+            else {
+                count = 1
+            }
+
+            if (count === maxCount) {
+                result.push(root.val)
+
+            }
+            if (count > maxCount) {
+                result = [];
+                maxCount = count;
+                result.push(root.val)
+            }
+            pre = root
+            search(root.right)
+        }
+        search(root)
+        return result
+    };
+</script>
+
+</html>

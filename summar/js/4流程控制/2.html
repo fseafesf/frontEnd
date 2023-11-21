@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>分支流程循环</title>
+  </head>
+  <body></body>
+  <script>
+    //for 循环的执行过程
+    /* let j = 0
+    for (let i = 0; i < 101; i++) {
+      console.log(`这个人今年${i + 1}岁`);
+      if(i == 2){
+        console.log('222');
+      }
+      j += i;
+    }
+    console.log(j); */
+    
+    //求1-100平均值
+    let sum = 0;
+    let average = 0;
+    for (let i = 0; i < 101; i++) {
+      sum += i;
+    }
+    average = sum / 100;
+    console.log(average);
+
+    //求1-100偶数和 奇数和
+    let even = 0;
+    let odd =0;
+    for(let i =0;i<101;i++){
+        if(i%2 == 0) {
+            even += i;
+        }
+        else if(i/2 != 0){
+            odd += i;
+        }
+    }
+    console.log(even);
+    console.log(odd);
+  </script>
+</html>

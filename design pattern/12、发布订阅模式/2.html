@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const PubSub = {
+        message: {},
+        publisher(type, data) {
+            if (!this.message[type]) return
+            this.message[type].forEach(element => {
+                element(data)
+            });
+        },
+        subscribe(type, cb) {
+            if (!this.message[type]) {
+                this.message[type] = [cb]
+            }
+            else {
+                this.message[type].push(cb)
+            }
+        },
+        unSubscribe(type, cb) {
+            if (!this.message[type]) return
+            if (!cb) {
+                // 取消所有当前type
+                this.message[type] && (this.message[type] = [])
+            }
+            else {
+                this.message[type] = this.message[type].filter(item => {
+                    item !== cb
+                })
+            }
+        }
+    }
+
+    function testA() {
+        console.log("testA")
+    }
+
+    function testB() {
+        console.log("testB")
+    }
+
+    PubSub.subscribe("A", testA)
+    PubSub.subscribe('B', testB)
+</script>
+
+</html>

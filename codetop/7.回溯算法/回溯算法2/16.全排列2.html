@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var permuteUnique = function (nums) {
+      let res = [];
+      let path = [];
+      let length = nums.length;
+      let used = Array(length).fill(false);
+      nums.sort((a, b) => a - b);
+      function backTracking(used) {
+        if (path.length == length) {
+          res.push([...path]);
+          return;
+        }
+        for (let i = 0; i < length; i++) {
+          if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+            continue;
+          }
+          if (!used[i]) {
+            path.push(nums[i]);
+            used[i] = true;
+            backTracking(used);
+            path.pop();
+            used[i] = false;
+          }
+        }
+      }
+      backTracking(used);
+      return res;
+    };
+  </script>
+</html>

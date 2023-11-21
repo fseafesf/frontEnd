@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        display: block;
+        height: 200px;
+        width: 200px;
+        background: pink;
+    }
+</style>
+<body>
+    <div>
+
+    </div>
+    <btn id="btn">点击</btn>
+</body>
+<script>
+    let btn = document.getElementById('btn');
+    let div = document.getElementsByTagName('div')[0];
+    btn.onclick = function(){
+        div.style.display = 'none'
+    }
+</script>
+</html>

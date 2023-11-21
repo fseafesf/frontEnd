@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组对象</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = new Array(2, 3);
+    console.log(arr);
+
+    function change(arr) {
+      if (arr instanceof Array) {
+        let newArr = [];
+        for (let i = arr.length - 1; i > -1; i--) {
+          newArr[newArr.length] = arr[i];
+        }
+        return newArr;
+      } else {
+        return "错误";
+      }
+    }
+    console.log(change([1, 2, 3, 4, 5]));
+    console.log(change(1,2,3,4,5));
+
+    //检测是否为数组
+    //1 instanceof
+    let arr2 = [];
+    console.log(typeof arr2);
+    console.log(arr2 instanceof Array);
+    console.log(Array.isArray(arr2))
+  </script>
+</html>

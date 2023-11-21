@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var canConstruct = function (ransomNote, magazine) {
+        let result = true;
+        let obj = {};
+        if (ransomNote.length < magazine.length) {
+            result = false
+        }
+        for (let key of ransomNote) {
+            console.log(key)
+            obj[key] = obj[key] ? ++obj[key] : 1
+        }
+        
+        for (let key of magazine) {
+            obj[key] && obj[key]--
+        }
+
+        for (let key in obj) {
+            
+            if (obj[key] > 0) {
+                
+                result = false;
+                break;
+            }
+        }
+        return result;
+    };
+    canConstruct('aa', 'aab')
+</script>
+
+</html>

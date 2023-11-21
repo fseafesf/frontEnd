@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>算法第一次实验</h1>
+    <div class="list">
+        <div class="first">
+            <h2>输入n获得结果</h2>
+            <div class="input">
+                <label for="input">请输入:</label>
+                <input type="text" id="input">
+                <button id="btn">开始</button>
+            </div>
+            <div class="output">
+                <div>
+                    递归的结果为: <span id="one"></span>
+                </div>
+                <div>
+                    迭代的结果为: <span id="two"></span>
+                </div>
+                <div>
+                    迭代改进的结果为: <span id="three"></span>
+                </div>
+                <div>
+                    公式的结果为: <span id="four"></span>
+                </div>
+                <div>
+                    矩阵相乘的结果为: <span id="five"></span>
+                </div>
+            </div>
+        </div>
+        <div class="second">
+            <div class="s1">
+                <h2>利用迭代法寻找环境支持的最大整数</h2>
+                <button id="btn2">开始</button>
+            </div>
+            <div class="result">
+                <div>支持的最大整数为: <span id="ddCount"></span></div>
+                <div>所用的时间为: <span id="ddTime"></span></div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="t1">
+                <h2>利用递归寻找环境支持的最大整数</h2>
+                <button id="btn3">开始</button>
+            </div>
+            <div class="result">
+                <div>支持的最大整数为: <span id="dgCount"></span></div>
+                <div>所用的时间为: <span id="dgTime"></span></div>
+            </div>
+        </div>
+        <div class="forth">
+            <h2>根据第三步计算的数列号n,采用递归的方法计算</h2>
+            <div class="input">
+                <label for="input1">请输入:</label>
+                <input type="text" id="input1">
+                <button id="btn4">开始</button>
+            </div>
+            <div class="result">
+                <div>所用的时间为: <span id="time"></span></div>
+            </div>
+        </div>
+        <div class="fifth">
+            <div class="f1">
+                <h2>用递归算法30s可以算到的位数
+                    <button id="btn5">开始</button>
+                </h2>
+                <div class="result">
+                    <div>位数为: <span id="dgdgCount"></span></div>
+                    <div>算出下一个所用的时间为: <span id="dgdgTime"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="sixth">
+            <div class="s1">
+                <h2>用迭代算法30s可以算到的位数
+                    <button id="btn6">开始</button>
+                </h2>
+                <div class="result">
+                    <div>位数为: <span id="ddddCount"></span></div>
+                    <div>算出下一个所用的时间为: <span id="ddddTime"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="sixth">
+            <div class="s1">
+                <h2>公式法出现偏差的时候
+                    <button id="btn7">开始</button>
+                </h2>
+                <div class="result">
+                    <div>位数为: <span id="gsCount"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // let input = document.querySelector("#input");
+    // let one = document.querySelector("#one");
+    // let two = document.querySelector("#two");
+    // let three = document.querySelector("#three");
+    // let four = document.querySelector("#four");
+    // let five = document.querySelector("#five");
+
+    // let ddCount = document.querySelector("#ddCount")
+    // let ddTime = document.querySelector("#ddTime")
+    btn.addEventListener('click', () => {
+        setTimeout(() => {
+            one.innerText = fib1(input.value)
+        }, 0)
+        two.innerHTML = fib2(input.value);
+        three.innerHTML = fib2Plus(input.value);
+        four.innerHTML = fib3(input.value);
+        five.innerHTML = fib4(input.value);
+    })
+
+    btn2.addEventListener('click', () => {
+        let result = findMax()
+        ddCount.innerHTML = result.count;
+        ddTime.innerHTML = result.end
+    })
+
+    btn3.addEventListener('click', () => {
+        let result = find();
+        dgCount.innerHTML = result.n;
+        dgTime.innerHTML = `${result.end / 1000}秒`;
+    })
+
+    btn4.addEventListener('click', () => {
+        let val = input1.value;
+        let result = testDigui(val);
+        time.innerHTML = `${result.end}秒`
+    })
+    btn5.addEventListener('click' , () => {
+        let result = recursion_time(30);
+        dgdgCount.innerHTML = result.i
+        dgdgTime.innerHTML = result.res
+    })
+    btn6.addEventListener('click' , ()=> {
+        console.log(123)
+        let result = time_iteration();
+        console.log(result)
+        ddddCount.innerHTML = result.count;
+        ddddTime.innerHTML = result.res
+    })
+    btn7.addEventListener('click' , () => {
+        let result = findMin();
+        gsCount.innerHTML = result
+    })
+    // 递归算法
+    function fib1(n) {
+        if (n == 1 || n == 2) {
+            return 1
+        }
+        else return fib1(n - 1) + fib1(n - 2)
+    }
+
+
+    // 迭代算法
+    function fib2(n) {
+        let result = 0;
+        let previous = 1;
+        let previousPro = 1;
+        if (n == 1 || n == 2) {
+            return 1
+        }
+        for (let i = 2; i < n; i++) {
+            result = previous + previousPro;
+            previousPro = previous;
+            previous = result;
+        }
+        return result;
+    }
+    // console.log(fib2(11))
+
+    // 迭代改进
+    function fib2Plus(n) {
+        if (n > 1) {
+            let a = 0;
+            let b = 1;
+            do {
+                let tmp = b;
+                b += a;
+                a = tmp;
+            } while (--n > 1);
+            return b
+        }
+        return n;
+    }
+    console.log(fib2Plus(9))
+
+    // 公式
+    function fib3(n) {
+        let result = 0;
+        let temp = Math.sqrt(5);
+        result = parseInt((1 / temp) * (Math.pow((1 + temp) / 2, n) - Math.pow((1 - temp) / 2, n)))
+        return result;
+    }
+    // console.log(fib3(13))
+
+    // 矩阵相乘
+    function fib4(n) {
+        const fib = () => {
+            if (n < 2) {
+                return n
+            }
+            const q = [[1, 1], [1, 0]];
+            const res = pow(q, n - 1);
+            return res[0][0]
+        }
+
+        const pow = (a, n) => {
+            let ret = [[1, 0], [0, 1]];
+            while (n > 0) {
+                if ((n & 1) === 1) {
+                    ret = multiply(ret, a)
+                }
+                n >>= 1;
+                a = multiply(a, a)
+            }
+            return ret
+        }
+
+        const multiply = (a, b) => {
+            const c = new Array(2).fill(0).map(() => new Array(2).fill(0))
+            for (let i = 0; i < 2; i++) {
+                for (let j = 0; j < 2; j++) {
+                    c[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j];
+                }
+            }
+            return c
+        }
+        return fib()
+    }
+    // console.log(fib4(11))
+
+    // 用迭代法寻找编程环境支持的最大整数
+    function findMax() {
+        let a = 1, b = 1, c = 2;
+        let count = 3;
+        let start = new Date().getTime()
+        let end;
+        for (; b < c;) {
+            if (c >= Math.pow(2, 31) - 1) {
+                end = (new Date().getTime() - start) / 1000;
+                break;
+            }
+            a = b;
+            b = c;
+            c = a + b;
+            count++;
+        }
+        return {
+            count, end
+        }
+    }
+    console.log(findMax())
+
+    // 用递归算法算出编程环境支持的最大整数
+    function find() {
+        let n = 3;
+        let start = new Date().getTime()
+        while (fib1(n) < Math.pow(2, 31) - 1) {
+            n = n + 1;
+        }
+        let end = new Date().getTime() - start
+        return {
+            n, end
+        }
+    }
+
+    //采用递归的方法 看第47个数能否在一分钟完成
+    function testDigui(num) {
+        let start = new Date().getTime()
+        let res = fib1(num)
+        let end = (new Date().getTime() - start) / 1000
+        return {
+            end, res
+        }
+    }
+    // console.log(testDigui(47))
+
+
+    // 迭代三十秒可以算到多少位
+    function time_iteration() {
+        let a = 1, b = 1, c = 2;
+        let count = 3;
+        let start = new Date().getTime();
+        let end = new Date().getTime();
+        while (end - start < 30000) {
+            a = b;
+            b = c;
+            c = a + b;
+            count = count + 1;
+            end = new Date().getTime();
+        }
+        a = b;
+        b = c;
+        c = a + b;
+        let res = (new Date().getTime() - end) / 1000;
+        return {
+            count, res
+        }
+    }
+    // console.log(time_iteration())
+
+
+    //递归三十秒可以算到多少位
+    function recursion_time(time) {
+        let start = new Date().getTime();
+        let i = 3;
+        let end = new Date().getTime();
+        while (end < start + time * 1000) {
+            end = new Date().getTime();
+            i++;
+            fib1(i)
+        }
+        fib1(i + 1);
+        let res = (new Date().getTime() - end) / 1000
+        return {
+            i, res
+        }
+    }
+    // console.log(recursion_time(30))
+
+
+    //找出出现误差时的最小的数
+    function findMin() {
+        for (let i = 1; i < 1000; i++) {
+            while (fib2(i) !== fib3(i)) {
+                return i
+            }
+        }
+    }
+    console.log(findMin())
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建对象的三种方式</title>
+  </head>
+  <body></body>
+  <script>
+    //利用字面量创建对象
+    let obj = {
+      name: "cxp",
+      age: 18,
+      sex: "男",
+      sayHi: function () {
+        console.log(`我是${this.name}`);
+      },
+    };
+    //调用属性
+    obj.sayHi();
+    //对象名['属性名']
+    console.log(obj["age"]);
+
+    //变量和属性的相同点 他们都是用来存储数据的
+    //变量单独声明并赋值 单独存在  属性在对象里面 不需要声明
+
+    //利用new Object创建对象
+    let obj1 = new Object();
+    obj1.name = "cxp";
+    obj1.age = 18;
+    console.log(obj1);
+    console.log(obj1["name"]);
+    console.log(obj1[name]);
+
+    //利用构造函数来创建对象
+    function Person(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    let p1 = new Person("cxp", 18, "男");
+    console.log(typeof p1);
+  </script>
+</html>

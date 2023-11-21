@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [-10, -1, 0, 3, 10]
+    var sortedSquares = function (nums) {
+        let length = nums.length
+        let result = Array(length)
+        let left = 0;
+        let right = length - 1;
+        let k = result.length - 1;
+        while (left <= right) {
+            if (nums[left] * nums[left] < nums[right] * nums[right]) {
+                result[k--] = nums[right] * nums[right];
+                right--;
+            }
+            else if (nums[left] * nums[left] > nums[right] * nums[right]) {
+                result[k--] = nums[left] * nums[left]
+                left++;
+            }
+            else {
+                result[k--] = nums[left] * nums[left]
+                result[k--] = nums[right] * nums[right]
+                left++;
+                right--;
+            }
+        }
+        console.log(result)
+        return result
+    };
+
+    // 双指针
+    var sortedSquares = function (nums) {
+        let length = nums.length
+        let result = Array(length)
+        let left = 0;
+        let right = length - 1;
+        let k = result.length - 1;
+        while (left <= right) {
+            if (nums[left] * nums[left] < nums[right] * nums[right]) {
+                result[k--] = nums[right] * nums[right]; // 不能在这里直接right-- 右指针会移动两次
+                right--;
+            }
+            else {
+                result[k--] = nums[left] * nums[left]
+                left++;
+            }
+
+        }
+        console.log(result)
+        return result
+    };
+    sortedSquares(nums)
+</script>
+
+
+</html>

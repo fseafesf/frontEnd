@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>分支流程控制</title>
+  </head>
+  <body></body>
+  <script>
+    //if 语句 执行思路 如果if里面的条件表达式结果为真 则执行大括号里面的执行语句
+    // if(true){
+    //     console.log(1);
+    // }
+
+    // let age = prompt('输入');
+    // if(age - 0 > 18){
+    //     alert('允许进入')
+    // }
+    // else{
+    //     alert('不允许进入')
+    // }
+
+    /*  let isErr = true;
+    //三元表达式
+    console.log(isErr ? "123" : "456");
+
+    let num = prompt("shuru");
+    let num1 = num < 10 ? "0" + num : num;
+    console.log(num1); */
+
+    //switch语句
+    let n = 1;
+    switch (n) {
+      case 1:
+        console.log(123);
+        break;
+      case 2:
+        console.log(445);
+        break;
+      default:
+        console.log(789);
+    }
+
+    let fruit = prompt("shuru");
+    switch (fruit) {
+      case "apple":
+        console.log(20);
+        break;
+      case "pear":
+        console.log(10);
+        break;
+      default:
+        console.log("no");
+    }
+
+    //switch 和 if else if语句的区别
+    //一般情况下 ，可以互换
+    //前者 值比较确定 后者 更加令狐平
+  </script>
+</html>

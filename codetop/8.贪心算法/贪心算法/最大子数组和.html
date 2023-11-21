@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let nums = [-2,1,-3,4,-1,2,1,-5,4]
+    var maxSubArray = function (nums) {
+        let pre = 0;
+        let max = nums[0];
+        nums.forEach(element => {
+            pre = Math.max(pre,pre+element);//将每个数字和之前的和作比较 假如当前数字比较大 将之前的和改为当前数字 从当前数字开始
+            max = Math.max(pre,max)  // 每次比较之前的最大值 和 现在的和的大小
+        });
+        return max
+    };
+</script>
+
+</html>

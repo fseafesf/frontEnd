@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    function ListNode(val, next) {
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
+    }
+    var removeElements = function (head, val) {
+        let ret = new ListNode(0, head);
+        let cur = ret
+        while (cur.next) {
+            if (cur.next.val === val) {
+                cur.next = cur.next.next;
+                continue;
+            }
+            cur = cur.next
+        }
+        return ret.next
+    };
+    // 核心思路 : 将当前头节点通过构造函数保存在新的变量中
+    // 然后对新构造的链表进行遍历 假如出现当前值 将当前结点删除
+</script>
+
+</html>

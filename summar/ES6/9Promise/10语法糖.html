@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /* new Promise((resolve) => {
+      console.log("后盾人");
+      resolve("123");
+    }).then((v) => console.log(v)); */
+
+    async function hd() {
+      let name = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("123");
+        }, 2000);
+      });
+      let a = await new Promise((resolve) => {
+        setTimeout(() => {
+          console.log(name + 456);
+          resolve(name + 456);
+        }, 2000);
+      });
+    }
+    hd();
+  </script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let grid = [
+      [0, 0, 0, 0],
+      [1, 0, 1, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ];
+    var numEnclaves = function (grid) {
+      let dir = [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ];
+
+      let m = grid.length;
+      let n = grid[0].length;
+
+      function bfs(x, y) {
+        let queue = [];
+        queue.push([x, y]);
+        grid[x][y] = 0;
+        console.log(x, y);
+        while (queue.length !== 0) {
+          let top = queue.shift();
+          for (let i = 0; i < 4; i++) {
+            let nextX = top[0] + dir[i][0];
+            let nextY = top[1] + dir[i][1];
+            console.log(nextX, nextY, grid[nextX][nextY]);
+            if (nextX < 0 || nextX >= m || nextY < 0 || nextY >= n) continue;
+            if (grid[nextX][nextY] === 1) {
+              console.log(nextX, nextY, grid[nextX][nextY]);
+              queue.push([nextX, nextY]);
+              grid[nextX][nextY] = 0;
+            }
+          }
+        }
+      }
+
+      for (let i = 0; i < m; i++) {
+        if (grid[i][0] == 1) {
+          bfs(i, 0);
+          console.log(i);
+        }
+        if (grid[i][n - 1] == 1) {
+          bfs(i, n - 1);
+          console.log(i);
+        }
+      }
+
+      for (let j = 0; j < n; j++) {
+        if (grid[0][j] == 1) {
+          bfs(0, j);
+          console.log(j);
+        }
+        if (grid[m - 1][j] == 1) {
+          bfs(m - 1, j);
+          console.log(j);
+        }
+      }
+
+      let count = 0;
+      console.log(grid);
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (grid[i][j] == 1) {
+            count++;
+          }
+        }
+      }
+      return count;
+    };
+
+    numEnclaves(grid);
+  </script>
+
+  <script>
+    var numEnclaves = function (grid) {
+      let dir = [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ];
+
+      let m = grid.length;
+      let n = grid[0].length;
+
+      function dfs(x, y) {
+        grid[x][y] = 0;
+        for (let i = 0; i < 4; i++) {
+          let nextX = x + dir[i][0];
+          let nextY = y + dir[i][1];
+          if (nextX < 0 || nextX >= m || nextY < 0 || nextY >= n) continue;
+          if (grid[nextX][nextY] == 0) continue;
+
+          dfs(nextX, nextY);
+        }
+      }
+
+      for (let i = 0; i < m; i++) {
+        if (grid[i][0] == 1) {
+          dfs(i, 0);
+        }
+        if (grid[i][n - 1] == 1) {
+          dfs(i, n - 1);
+        }
+      }
+
+      for (let j = 0; j < n; j++) {
+        if (grid[0][j] == 1) {
+          dfs(0, j);
+        }
+        if (grid[m - 1][j] == 1) {
+          dfs(m - 1, j);
+        }
+      }
+
+      let count = 0;
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (grid[i][j] == 1) count++;
+        }
+      }
+
+      return count;
+    };
+  </script>
+</html>

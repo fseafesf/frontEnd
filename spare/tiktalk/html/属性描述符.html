@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let goods = {
+        id:1,
+        price:500,
+        name:'123'
+    }
+    class Good {
+        constructor(g){
+            Object.defineProperty(this,'data',{
+                get () {
+                    return g
+                },
+                set(){
+                    throw new Error('错误')
+                },
+                configurable:false
+            })
+        }
+    }
+
+    let g = new Good(goods)
+    console.log(g.data)
+
+</script>
+</html>

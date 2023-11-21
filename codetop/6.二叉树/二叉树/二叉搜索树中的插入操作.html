@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var insertIntoBST = function (root, val) {
+        function insert(root, val) {
+            if (root == null) { //终止条件
+                let node = new TreeNode(val)
+                return node //返回新加入结点
+            }
+            if (root.val > val) {
+                root.left = insert(root.left, val)
+            }
+            else if (root.val < val) {
+                root.right = insert(root.right, val)
+            }
+            return root // 返回结点
+        }
+        return insert(root, val)
+    };
+</script>
+
+</html>

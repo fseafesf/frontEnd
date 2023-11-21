@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Star {
+        play() {
+            console.log('演习')
+        }
+    }
+
+    class StarProxy {
+        constructor() {
+            this.superStar = new Star()
+        }
+
+        talk(price) {
+            if (price >= 10000) {
+                this.superStar.play()
+            }
+            else {
+                throw new Error('错误')
+            }
+        }
+    }
+
+    let jr = new StarProxy()
+    jr.talk(20000)
+
+</script>
+
+</html>

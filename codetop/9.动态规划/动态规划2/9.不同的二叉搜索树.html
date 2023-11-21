@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var numTrees = function (n) {
+      let dp = Array(n + 1).fill(0);
+      dp[0] = 1;
+      dp[1] = 1;
+      // 从3开始 每个头结点能得到的二叉搜索树 都是左子结点从0开始 到右子结点到0结束
+      for (let i = 2; i <= n; i++) {
+        for (let j = 1; j <= i; j++) {
+          dp[i] += dp[j - 1] * dp[i - j];
+        }
+      }
+      return dp[n];
+    };
+  </script>
+</html>

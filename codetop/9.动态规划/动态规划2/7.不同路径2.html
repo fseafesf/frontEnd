@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var uniquePathsWithObstacles = function (obstacleGrid) {
+      const m = obstacleGrid.length;
+      const n = obstacleGrid[0].length;
+      const db = Array(m)
+        .fill()
+        .map(() => Array(n).fill(0));
+
+      for (let i = 0; i < m && obstacleGrid[i][0] == 0; ++i) {
+        db[i][0] = 1;
+      }
+      for (let i = 0; i < n && obstacleGrid[0][i] == 0; ++i) {
+        db[0][i] = 1;
+      }
+
+      for (let i = 1; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+          db[i][j] = obstacleGrid[i][j] == 1 ? 0 : db[i - 1][j] + db[i][j - 1];
+        }
+      }
+
+      return db[m - 1][n - 1];
+    };
+  </script>
+</html>

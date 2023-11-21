@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //对象字面量
+    let name = "cxp";
+    let age = 18;
+    let obj = {
+      name,
+      age,
+      ["key"]: 123,
+    };
+    Object.defineProperty(obj , 'property' ,{value:12})
+    console.log(obj);
+    console.log(obj["key"]);
+    console.log({...obj});
+
+    //Object.is()
+    let obj1 = {
+        name:'znx',
+        age:22
+    }
+    let obj2 = {
+        name:'zs',
+        age:45,
+        sex:'女'
+    }
+    // === 为同值相等 Object.is()严格相等
+    console.log(Object.is(obj1.name , obj2.name));
+
+    //Object.assign() 合并对象
+    let target = {
+        a:123,
+        b:456
+    }
+    let source = {
+        c:99,
+        d:66
+    }
+    source.c = 77
+    let obj3 = Object.assign(target , source)
+    console.log(obj3);
+
+    //Object.create()
+  </script>
+</html>

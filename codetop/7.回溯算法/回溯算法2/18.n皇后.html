@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /**
+     * @param {number} n
+     * @return {string[][]}
+     */
+    var solveNQueens = function (n) {
+      let result = [];
+      let chessBoard = Array(n)
+        .fill([])
+        .map(() => Array(n).fill("."));
+
+      function isValid(row, col, n, chessBoard) {
+        for (let i = 0; i < row; i++) {
+          if (chessBoard[i][col] === "Q") {
+            return false;
+          }
+        }
+        for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+          if (chessBoard[i][j] === "Q") {
+            return false;
+          }
+        }
+
+        for (let i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+          if (chessBoard[i][j] === "Q") {
+            return false;
+          }
+        }
+        return true;
+      }
+      function transform(chessBoard) {
+        let chessBoardBack = [];
+        chessBoard.forEach((row) => {
+          let rowVal = "";
+          row.forEach((value) => {
+            rowVal += value;
+          });
+          chessBoardBack.push(rowVal);
+        });
+        return chessBoardBack;
+      }
+
+      function backTracking(chessBoard, row) {
+        if (row == n) {
+          result.push(transform(chessBoard));
+          return;
+        }
+        for (let col = 0; col < n; col++) {
+          if (isValid(row, col, n, chessBoard)) {
+            chessBoard[row][col] = "Q";
+            backTracking(chessBoard, row + 1);
+            chessBoard[row][col] = ".";
+          }
+        }
+      }
+      backTracking(chessBoard, 0);
+      return result;
+    };
+  </script>
+</html>

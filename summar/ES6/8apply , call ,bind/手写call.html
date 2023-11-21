@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+  </body>
+  <script>
+    let name = 'window';
+    function person(age , hobby){
+        console.log(this.name)
+        console.log(age);
+        console.log(hobby);
+    }
+    const teacher = {
+        name:'低价'
+    }
+    person.call(teacher)
+
+    Function.prototype.NewCall = function(obj,...args){
+        obj.fun = this;
+        obj.fun(...args);
+        delete obj.fun;
+    }
+    person.NewCall(teacher , 10 , '123')
+
+    
+  </script>
+</html>

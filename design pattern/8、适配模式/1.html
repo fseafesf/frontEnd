@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class TencentMap{
+        show(){
+            console.log('开始渲染腾讯地图')
+        }
+    }
+
+    class BaiduMap{
+        display(){
+            console.log('开始渲染百度地图')
+        }
+    }
+
+    class TencentAdapter extends TencentMap{
+        constructor(){
+            super()
+        }
+
+        // 适配器
+        display(){
+            this.show()
+        }
+    }
+
+    function render(map){
+        map.display()
+    }
+
+    render(new TencentMap())
+    render(new BaiduMap())
+
+    $ = {
+        ajax(){
+
+        }
+    }
+    $.ajax()
+</script>
+</html>

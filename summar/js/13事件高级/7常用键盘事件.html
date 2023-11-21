@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .search {
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      margin-top: 200px;
+      position: relative;
+    }
+    .con {
+      display: none;
+      position: absolute;
+      top: -40px;
+      width: 171px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 5px 0;
+      font-size: 18px;
+      line-height: 20px;
+      color: #333;
+    }
+    .con::before {
+      content: "";
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 28px;
+      left: 18px;
+      border: 8px solid #000;
+      border-style: solid dashed dashed;
+      border-color: #fff transparent transparent;
+    }
+  </style>
+  <body>
+    <input id="input" type="text" />
+    <div class="search">
+      <div class="con"></div>
+      <input id="jd" placeholder="输入快递单号" type="text" />
+    </div>
+  </body>
+  <script>
+    /*  document.addEventListener('keydown' , e=>{
+        console.log(2);
+    })
+    //keypress 不能识别功能键
+    document.addEventListener('keypress' , e=>{
+        console.log(5);
+    }) */
+    //执行顺序 keydown keypress keyup
+
+    //keycode 监听哪个键  keyup和keydown不区分字母大小写 keypress区分字母的大小写
+    let search = document.querySelector("input");
+    document.onkeyup = function (e) {
+      console.log(e.keyCode);
+      if (e.keyCode === 13) {
+        console.log("确认");
+      } else if (e.keyCode === 83) {
+        search.focus();
+      }
+    };
+
+    let con = document.querySelector(".con");
+    let jd = document.getElementById("jd");
+    jd.addEventListener("keyup", (e) => {
+      if (e.target.value != "") {
+        con.style.display = "block";
+        con.innerHTML = e.target.value;
+      } else {
+        con.style.display = "none";
+        this.value = " ";
+      }
+    });
+    jd.addEventListener("focus", (e) => {
+      if (e.target.value != "") {
+        con.style.display = "block";
+      }
+    });
+    jd.addEventListener("blur", () => {
+      con.style.display = "none";
+    });
+    //keydown keypress 是在按下的时候触发 内容还没来得及进入到输入框中
+  </script>
+</html>

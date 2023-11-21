@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body,
+    html {
+      height: 100%;
+    }
+    .login-header {
+      position: relative;
+    }
+    .login {
+      display: none;
+      width: 521px;
+      height: 280px;
+      position: fixed;
+      border: #ebebeb solid 1px;
+      left: 50%;
+      top: 50%;
+      background: #ffffff;
+      box-shadow: 0px 0px 20px #ddd;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    #bg {
+      display: none;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+  </style>
+  <body>
+    <div class="login-header"><a href="javascript:;">点击，弹出登录框</a></div>
+    <div class="login">
+      <div id="title">登陆会员</div>
+      <div id="close">关闭</div>
+    </div>
+    <div id="bg"></div>
+  </body>
+  <script>
+    let a = document.querySelector("a");
+    let login = document.querySelector(".login");
+    let close = document.getElementById("close");
+    let bg = document.getElementById("bg");
+    let title = document.getElementById("title");
+    a.addEventListener("click", () => {
+      login.style.display = "block";
+      bg.style.display = "block";
+    });
+    close.addEventListener("click", () => {
+      login.style.display = "none";
+      bg.style.display = "none";
+    });
+
+    title.addEventListener("mousedown", (e) => {
+      let x = e.pageX - login.offsetLeft;
+      let y = e.pageY - login.offsetTop;
+      //鼠标移动的时候 鼠标在页面中的坐标 减去 鼠标在盒子中的坐标
+      document.addEventListener("mousemove", move);
+      function move(e) {
+        login.style.left = e.pageX - x + "px";
+        login.style.top = e.pageY - y + "px";
+      }
+      document.addEventListener("mouseup", () => {
+        document.removeEventListener("mousemove", move);
+      });
+    });
+  </script>
+</html>

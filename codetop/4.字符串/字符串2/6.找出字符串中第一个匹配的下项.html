@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let haystack = "sadbutsad", needle = "sad"
+    var strStr = function (haystack, needle) {
+        if (needle.length === 0) {
+            return 0
+        }
+        let next = getNext(needle);
+        let j = -1;
+        for (let i = 0; i < haystack.length; i++) { // 因为文本串 模式串比较 所以文本串从 0 开始
+            while(j >= 0 && haystack[i] !== needle[j+1]){
+                j = next[j]
+            }
+            if(haystack[i] == needle[j+1]){
+                j++
+            }
+            if(j == needle.length - 1){
+                return i - needle.length +1
+            }
+        }
+
+        function getNext(needle) {
+            let j = -1;
+            let next = [];
+            let length = needle.length  // j 是前缀的尾部 i 是后缀的尾部
+            next.push(j);
+            for (let i = 1; i < length; i++) {
+                while (j >= 0 && needle[i] !== needle[j + 1]) { // 前后缀不相同的时候要一直回退 所以while
+                    j = next[j]
+                }
+                if (needle[i] === needle[j + 1]) {
+                    j++;
+                }
+                next.push(j);
+            }
+            return next;
+        }
+
+        return -1
+    };
+
+    strStr(haystack, needle)
+</script>
+
+</html>

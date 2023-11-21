@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var preorderTraversal = function (root) {
+        let res = [];
+        let stack = [root];
+        while (stack.length) {
+            let node = stack.pop();
+            if (!node) {
+                res.push(stack.pop().val);
+                continue;
+            }
+            if (node.right) stack.push(node.right);
+            if (node.left) stack.push(node.left);
+            stack.push(node);
+            stack.push(null)
+        }
+        return res;
+    }
+
+    var preorderTraversal = function (root) {
+        let res = [];
+        let stack = [root];
+        while (stack.length) {
+            let node = stack.pop();
+            if (!node) {
+                res.push(stack.pop().val);
+                continue;
+            }
+            if (node.right) stack.push(node.right);
+            stack.push(node);
+            stack.push(null)
+            if (node.left) stack.push(node.left);
+        }
+        return res;
+    }
+
+    var preorderTraversal = function (root) {
+        let res = [];
+        let stack = [root];
+        while (stack.length) {
+            let node = stack.pop();
+            if (!node) {
+                res.push(stack.pop().val); // 只有在遇到null的时候 往结果集加入
+                continue;
+            }
+            stack.push(node);
+            stack.push(null)
+            if (node.right) stack.push(node.right);
+            if (node.left) stack.push(node.left);
+        }
+        return res;
+    }
+</script>
+
+</html>

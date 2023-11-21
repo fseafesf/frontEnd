@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var lowestCommonAncestor = function (root, p, q) {
+      function traversal(node, p, q) {
+        if (node == null) {
+          return node;
+        }
+        if (node.val > p.val && node.val > q.val) {
+          let left = traversal(node.left, p, q);
+          if (left !== null) {
+            return left;
+          }
+        }
+
+        if (node.val < p.val && node.val < q.val) {
+          let right = traversal(node.right, p, q);
+          if (right !== null) {
+            return right;
+          }
+        }
+        return node;
+      }
+      return traversal(root, p, q);
+    };
+  </script>
+</html>

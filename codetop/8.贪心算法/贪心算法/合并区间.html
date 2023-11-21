@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let intervals = [[1,4],[0,4]]
+
+    var merge = function (intervals) {
+        intervals.sort((a, b) => {
+            return a[0] - b[0]
+        })
+        let result = [];
+        let prev = intervals[0];
+        let length = intervals.length
+        for (let i = 0; i < length; i++) {
+            let cur = intervals[i]
+            if(cur[0] > prev[1]){
+                result.push(prev);
+                prev = cur;   
+            }
+            else{
+                let right = Math.max(cur[1] ,prev[1]);
+                prev[1] = right;
+            }
+        }
+        result.push(prev)
+        return result
+    };
+
+    console.log(intervals)
+    console.log(merge(intervals))
+</script>
+
+</html>

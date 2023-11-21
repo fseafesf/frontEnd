@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .wrap {
+      width: 300px;
+      height: 300px;
+      margin: auto;
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="j_cbAll" />
+            </th>
+            <th>商品</th>
+            <th>价钱</th>
+          </tr>
+        </thead>
+        <tbody id="j_tb">
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>iPhone8</td>
+            <td>8000</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>iPhone8</td>
+            <td>8000</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>iPhone8</td>
+            <td>8000</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>iPhone8</td>
+            <td>8000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    // 1. 全选和取消全选
+    let j_cbAll = document.getElementById("j_cbAll");
+    let j_tbs = document.getElementById("j_tb").getElementsByTagName("input");
+    j_cbAll.onclick = function () {
+      for (let i = 0; i < j_tbs.length; i++) {
+        j_tbs[i].checked = this.checked;
+      }
+    };
+    //2. 下面影响上面
+    for (let j = 0; j < j_tbs.length; j++) {
+      j_tbs[j].onclick = function () {
+        let flag = true;
+        for (let k = 0; k < j_tbs.length; k++) {
+          if (!j_tbs[k].checked) {
+            flag = false;
+            break;
+          }
+        }
+        j_cbAll.checked = flag;
+      };
+    }
+  </script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var maxDepth = function (root) {
+        if (root == null) return 0;
+        let leftDepth = maxDepth(root.left);
+        let rightDepth = maxDepth(root.right);
+        let depth = 1 + Math.max(leftDepth, rightDepth)
+        return depth
+    };
+
+    var maxDepth = function (root) {
+        function recur(root, count) {
+            if (root == null) {
+                resMax = resMax > count ? resMax : count;
+                return;
+            }
+            recur(root.left, count + 1);
+            recur(root.right, count + 1);
+        }
+        let resMax = 0;
+        let count = 0;
+        recur(root, count)
+        return resMax;
+    }
+</script>
+
+</html>

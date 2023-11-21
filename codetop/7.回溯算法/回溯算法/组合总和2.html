@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let candidates = [10, 1, 2, 7, 6, 1, 5], target = 8;
+    var combinationSum2 = function (candidates, target) {
+        let path = [];
+        let res = [];
+        let used = new Array(candidates.length).fill(false);
+        candidates.sort((a, b) => a - b) //排序 将相同的数字靠在一起 便于比较是否用过
+        let sum = 0;
+        function back(startIndex) {
+            if (sum > target) {
+                return
+            }
+            if (sum == target) {
+                res.push(Array.from(path))
+                return;
+            }
+            for (let i = startIndex; i < candidates.length; i++) {
+                if (candidates[i] === candidates[i - 1] && used[i - 1] === false) {
+                    continue;
+                }
+                path.push(candidates[i]);
+                used[i] = true;
+                sum += candidates[i]
+                back(i + 1);
+                path.pop();
+                sum -= candidates[i];
+                used[i] = false
+            }
+        }
+        back(0);
+        return res
+    };
+    console.log(combinationSum2(candidates, target))
+</script>
+
+</html>

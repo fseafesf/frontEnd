@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="1000">
+        当前浏览器不支持canvas元素,请升级或更换浏览器！
+    </canvas>
+</body>
+<script>
+    // 获取 canvas 元素
+    var canvas = document.getElementById('canvas');
+    // 通过判断getContext方法是否存在来判断浏览器的支持性
+    if (canvas.getContext) {
+        // 获取绘图上下文
+        var ctx = canvas.getContext('2d');
+        // 绘制一条从起点（x: 50, y:50）到 另一个点（x: 200, y:200）的直线
+        //   ctx.moveTo(50, 50);
+        //   ctx.lineTo(300, 300);
+        //   ctx.lineTo(50,300)
+        //   ctx.lineTo(50,50)
+        //   ctx.stroke();
+
+        // ctx.strokeRect(50,50,200,200)
+
+        ctx.beginPath()
+        ctx.arc(50, 50, 50, 0, Math.PI, true)
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.beginPath()
+        ctx.arc(200, 200, 50, 0, Math.PI, true)
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.moveTo(100, 100)
+        ctx.quadraticCurveTo(200, 200, 350, 50)
+        ctx.stroke()
+
+        ctx.beginPath();
+        // 指定透明度的填充样式
+        ctx.fillStyle = "rgba(0, 255, 0, 0.2)";
+        ctx.fillRect(10, 10, 300, 100);
+        // 绘制一个矩形边框
+        ctx.beginPath();
+        // 指定透明度的描边样式
+        ctx.strokeStyle = "rgba(255, 0, 0, 0.7)";
+        ctx.strokeRect(10, 90, 100, 300);
+        // 绘制一个圆
+        ctx.beginPath()
+        ctx.fillStyle = "rgba(255, 255, 0, 1)";
+        // 设置透明度值
+        ctx.globalAlpha = 0.5;
+        ctx.arc(200, 200, 100, 0, Math.PI * 2, true);
+        ctx.fill();
+
+        ctx.font = "50px serif"; // 设置文案大小和字体
+        ctx.fillText("Canvas 详解", 50, 50);
+
+        var img = new Image();
+        img.src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20191212%2F556cc408058d4c64a46468761406afe6.png&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1660103116&t=8dd0c641e1e1890fa65ee80dfa428d34';
+        img.onload = function () {
+            // 在图片的（100，100）位置，裁剪一个300*300大小的内容，然后缩放到500*500绘制到Canvas中（0, 0）的地方
+            ctx.drawImage(img, 100, 100, 300, 300, 300, 300, 500, 500);
+        }
+
+        ctx.fillStyle = "#cccccc";
+        ctx.fillRect(10, 10, 300, 100);
+        ctx.save(); // 保存状态
+        ctx.fillStyle = "#ee7034";
+        ctx.fillRect(10, 150, 300, 100);
+        ctx.restore(); // 还原到上次保存的状态
+        ctx.fillRect(10, 300, 300, 100);
+
+        var img1 = new Image();
+        img1.src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20191212%2F556cc408058d4c64a46468761406afe6.png&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1660103116&t=8dd0c641e1e1890fa65ee80dfa428d34';
+        img1.onload = function () {
+            // 创建圆形裁剪路径
+            ctx.arc(250, 250, 200, 0, Math.PI * 2, false);
+            ctx.clip();
+            // 创建完后绘制
+            ctx.drawImage(img1, 0, 0, 500, 500);
+            // 2986018318
+        }
+    }
+</script>
+
+</html>

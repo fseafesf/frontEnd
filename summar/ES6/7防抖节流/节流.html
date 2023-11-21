@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <button class="btn">节流测试按钮</button>
+  </body>
+  <script>
+    let btn = document.querySelector(".btn");
+    btn.onclick = throttle(function () {
+      console.log("123");
+    }, 2000);
+
+      function throttle(callback, time) {
+      let prev = null;
+      return function () {
+        let next = Date.now();
+        if (!prev || next - prev >= 1000) {
+          callback();
+          prev = next
+        }
+      };
+    }
+    /* function throttle(callback, time) {
+      let flag = true;
+      let timer;
+      return function () {
+        if(!flag) return ;
+        flag = false;
+        clearInterval(timer);
+        timer = setInterval(() => {
+            callback();
+            flag = true;
+        }, time)
+      };
+    } */
+  </script>
+</html>

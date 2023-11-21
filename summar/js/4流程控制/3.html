@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例</title>
+  </head>
+  <body></body>
+  <script>
+    /* let num = prompt('人数:')
+    let sum = 0;
+    let average = 0;
+    for (let i = 0;i<=num;i++){
+        let score = Number(prompt('输入分数'));
+        sum += score;
+    }
+    average = (sum / num).toFixed(0)
+    console.log(average); */
+
+    let str = "";
+    /* for(let i =1;i<=5;i++){
+        str += '*'
+    }
+    console.log(str); */
+
+    //双重for循环
+    for (let i = 1; i <= 5; i++) {
+      //打印五行
+      for (let j = 1; j <= 5; j++) {
+        //一行打印五个
+        str += "* ";
+      }
+      str += "\n";
+    }
+    console.log(str);
+
+    let str1 = "";
+    for (let i = 1; i <= 10; i++) {
+      for (let j = 11 - i; j <= 10; j++) {
+        str1 += "* ";
+      }
+      str1 += "\n";
+    }
+    console.log(str1);
+
+    let str2 = "";
+    for(let i = 1;i<=9;i++){
+        for(let j = 1;j<=i;j++){
+            str2 += `${j} * ${i} = ${i*j}  `
+        }
+        str2 += '\n';
+    }
+    console.log(str2);
+  </script>
+</html>

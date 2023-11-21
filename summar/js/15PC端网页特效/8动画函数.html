@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动画函数</title>
+  </head>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      position: absolute;
+    }
+    span {
+      width: 120px;
+      height: 120px;
+      background: purple;
+      position: absolute;
+    }
+    button {
+      position: absolute;
+      margin-top: 500px;
+    }
+    .btn500 {
+      position: absolute;
+      margin-top: 400px;
+    }
+  </style>
+  <body>
+    <div></div>
+    <span></span>
+    <button>点击</button>
+    <button class="btn500">点击返回</button>
+  </body>
+  <script>
+    let div = document.querySelector("div");
+    let span = document.querySelector("span");
+    let btn = document.querySelector("button");
+    let btn500 = document.querySelector(".btn500");
+
+    //obj目标对象 target目标位置
+    //缓动动画原理 (目标值 - 现在的位置) / 10
+    function animate(obj, target, callback) {
+      console.log(callback);
+      //先清除以前的定时器
+      clearInterval(obj.timer);
+      obj.timer = setInterval(() => {
+        //把步长值改为整数
+        let num =
+          target - obj.offsetLeft > 0
+            ? Math.ceil((target - obj.offsetLeft) / 10)
+            : Math.floor((target - obj.offsetLeft) / 10);
+        if (obj.offsetLeft == target) {
+          clearInterval(obj.timer);
+          if (callback) {
+            callback();
+          }
+        } else {
+          obj.style.left = obj.offsetLeft + num + "px";
+        }
+      }, 15);
+    }
+    animate(div, 1000, fn);
+    function fn(){
+        div.style.background = 'red'
+    }
+    // animate(span , 1000)
+    btn.addEventListener("click", function () {
+      animate(span, 1000);
+    });
+    btn500.addEventListener("click", function () {
+      animate(span, 500);
+    });
+  </script>
+</html>

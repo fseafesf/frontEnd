@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var hasPathSum = function (root, targetSum) {
+        if (root == null) return false;
+        let quene = [];
+        let res = [0];
+        quene.push(root);
+        while (quene.length) {
+            let node = quene.shift();
+            let curVal = res.shift()
+            curVal = curVal + node.val;
+            if (curVal === targetSum && node.left == null && node.right == null) {
+                return true
+            }
+            if (node.left) {
+                quene.push(node.left)
+                res.push(curVal)
+            }
+            if (node.right) {
+                quene.push(node.right)
+                res.push(curVal)
+            }
+        }
+        return false
+    };
+</script>
+
+</html>

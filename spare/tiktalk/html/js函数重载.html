@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const seacher = {}
+
+    function addMethod(object, name, fn) {
+        const old = object[name];
+        object[name] = function (...args) {
+            console.log(fn.length)
+            if (args.length === fn.length) { // 判断参数是否一致
+                return fn.apply(this, args)
+            }
+            else if (typeof old === "function") {
+                console.log(old)
+                return old.apply(this,args)
+            }
+        }
+    }
+
+    addMethod(seacher, 'find', () => {
+        console.log("查询所有用户")
+    })
+    addMethod(seacher, 'find', (firstname) => {
+        console.log("查询某个用户")
+    })
+    addMethod(seacher, 'find', (firstname, lastname) => {
+        console.log(`插入${firstname} + ${lastname}`)
+    })
+
+    // seacher.find()
+
+    // let a = Promise.resolve(new Promise((resolve,reject) => {
+    //     resolve(123)
+    // }))
+    // a.then((res) => {
+    //     console.log(res)
+    // }).finally(() => {
+    //     console.log('finished')
+    // })
+</script>
+
+</html>

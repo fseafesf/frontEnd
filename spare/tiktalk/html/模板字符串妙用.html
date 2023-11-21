@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+
+</body>
+<script>
+    function splitStr() {
+        let args = arguments[0];
+        let fragment = args[0];
+        const inserts = Array.prototype.slice.call(args, 1);
+        let result = '';
+        for (let i = 0; i < fragment.length; i++) {
+            result += fragment[i]
+            console.log(fragment[i])
+            if (i < fragment.length - 1) {
+                result += inserts[i]
+            }
+        }
+        console.log(result)
+        return result;
+    }
+
+    HTMLElement.prototype.styles = function () {
+        const styles = splitStr(arguments)
+        console.log(arguments)
+        let curStyle = this.getAttribute('style');
+        if (curStyle) {
+            curStyle += styles
+        }
+        else {
+            curStyle = styles
+        }
+        this.style = styles
+        return this
+    }
+
+    let box = document.createElement('div')
+
+    let x = 'red';
+    let height = width = 100;
+    box = box.styles`
+              background-color:${x};
+              height:${height}px;
+              width:${width}px;
+    `;
+    console.log(box.style)
+    document.body.append(box)
+
+
+</script>
+
+</html>

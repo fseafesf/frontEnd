@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var subsetsWithDup = function (nums) {
+      let res = [];
+      let path = [];
+      let length = nums.length;
+      nums.sort((a, b) => a - b);
+
+      function backTracking(startIndex) {
+        res.push([...path]);
+        if (startIndex >= length) {
+          return;
+        }
+        for (let i = startIndex; i < length; i++) {
+          let num = nums[i];
+          if (i > startIndex && nums[i] == nums[i - 1]) continue;
+          path.push(num);
+          backTracking(i + 1);
+          path.pop();
+        }
+      }
+      backTracking(0);
+      return res;
+    };
+  </script>
+</html>

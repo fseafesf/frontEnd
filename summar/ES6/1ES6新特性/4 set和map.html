@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //Set对象是值的集合，你可以按照插入的顺序迭代它的元素。Set 中的元素只会出现一次，即 Set 中的元素是唯一的。
+    const set = new Set();
+    set.add(1);
+
+    //取出set的值可以用foreach
+    {
+      const set = new Set([1, 2]);
+      console.log(set);
+      console.log(set.has(15));
+      console.log(set.size);
+      // set.delete(1)
+      // console.log(set);
+      //set结构转化为数组
+      console.log([...set]);
+      console.log(Array.from(set));
+      set.forEach((element) => {
+        console.log(element);
+      });
+    }
+
+    let arr = [1, 2, 3, 1, 1, 2, 4, 3];
+    //利用reduce进行数组去重
+    /* let arr1 = arr.reduce((pre, cur) => {
+      if (pre.indexOf(cur) === -1) {
+        pre.push(cur);
+      }
+      return pre;
+    }, []);
+    console.log(arr1); */
+
+    //利用set进行数组去重
+    let arr1 = [...new Set(arr)];
+    console.log(...new Set(arr));
+    console.log(arr1);
+
+    //NaN 引用类型不能去重
+    let arr2 = [1, {}, {}, 2];
+    // console.log(new Set(arr2));
+
+    //Map
+    let map = new Map();
+    map.set("key", "value");
+    map.set(123, "123");
+    map.set(true, 122);
+    console.log(map);
+
+    let map1 = new Map([
+      ["haha", 12],
+      [true, 123],
+      [123, 123],
+    ]);
+    console.log(map1);
+    console.log(map.has("key"));
+    console.log(map1.get(true));
+    // map.delete('key');
+    // console.log(map);
+    for (let [a, b] of map) {
+      console.log(a, b);
+    }
+  </script>
+</html>
